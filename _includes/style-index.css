@@ -1,0 +1,97 @@
+*{
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	-ms-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+#fcontainer{
+	padding:0 100px 0 100px;
+}
+
+#logo{
+	width:300px;
+}
+#logotel{
+	width:280px;
+}
+
+#img1div{
+	float:left;
+}
+
+#img2div{
+	float:right;
+	margin-top:6px;
+}
+
+#seccontainer{
+	padding:0 125px 0 100px;
+}
+
+#pbh{
+	font-weight: bold;
+	color: #400000;
+	font-size: 16px;
+	padding-top:15px;
+}
+#pbhinfo{
+	padding:5px 3px 5px 15px;
+	text-align: justify;
+}
+
+#tcontainer{
+	padding:12px 50px 12px 115px;
+}
+
+#p3{
+	width:237px;
+	height:200px;
+}
+
+#carpic{
+	width:100%;
+	height:180px;
+}
+
+#carouselcontainer{
+	margin-top: 7px;
+}
+
+#graycontainer{
+	padding:0 125px 0 170px;
+}
+#amentext{
+	text-align: center;
+	font-weight: bolder;
+	color: #400000; 
+	font-size: 18px;
+}
+
+#logintextfields{
+	padding:12px 0 0 0;
+}
+
+#logintextfields span{
+	color:white;
+}
+
+#logintextfields input{
+	margin:0 15px 0 5px;
+	text-align: center;
+	border-radius: 4px;
+	border-style: none;
+}
+
+#logintextfields input:nth-child(5){
+	background-color: #007f00;
+	color:white;
+	padding:3px 3px 3px 3px;
+	width:80px;
+}
+
+#logintextfields a{
+	font-weight: Bold;
+	font-size: 15px
+}
