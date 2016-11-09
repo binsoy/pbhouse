@@ -42,7 +42,6 @@
 	}
 	else {
 		$_SESSION['notification'] = "Username already exists. \nPlease try again.";
-		header('Location: boarder.php');
 		header('Location: roommngmt.php');
 	}
 	*/
