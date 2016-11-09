@@ -86,7 +86,6 @@
                         <a href="#">View Transaction Logs</a><br>
                         <a href="#">Report Issue</a><br>
                         <a href="#">Write feedback about our service</a><br>
-                        <a href="#">Logout</a>
                     </div>
                 </div>
             </div>

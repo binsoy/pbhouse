@@ -48,9 +48,6 @@
                     <li class="active">Boarder Management</li>
                 </ol>
             </div>
-			<div class="col-lg-2">
-				<a href="#"><h4 style="color: red; margin-top: 40px;">+ Add Boarder</h4></a>
-			</div>
         </div>
         <!-- /.row -->
 
