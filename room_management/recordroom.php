@@ -28,10 +28,10 @@
 		
 		$queryB = "INSERT INTO room(roomID, floor, state, capacity, floorplan, rent, water, electricity) VALUES('', '$floor', '$status', '$pop', '$path', '$rate', '2', '2')";
 		$resultB = mysql_query($queryB) or die(mysql_error());
-		header('Location: roommngmt.php');
+		header('Location: roommngmt.php');	
 	}
 	else {
-		$_SESSION['notification'] = "Username already exists. \nPlease try again.";
+		$_SESSION['notification'] = " you have reached the maximum number of rooms";
 		header('Location: roommngmt.php');
 	}
 	

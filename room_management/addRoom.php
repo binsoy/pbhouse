@@ -75,7 +75,7 @@
                 </div>
                 <div id="buttons">
                     <center>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to continue?')">Submit</button>
                       <button type="reset" value="Reset" class="btn btn-danger">Reset</button>
                     </center>
                 </div>
@@ -127,6 +127,7 @@ if (uri.indexOf("?") > 0 ) {
     }   
     window.history.replaceState({}, document.title, clean_uri);
 }
+
 </script>
 
 </html>
