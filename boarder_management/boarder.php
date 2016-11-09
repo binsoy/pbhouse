@@ -55,9 +55,9 @@
         <div class="row">
             <div class="col-md-3">
                 <a href="portfolio-item.html">
-                    <img style="width: 400px; height: 300px" class="img-responsive img-hover" src="../_images/lily.jpg" alt="">
+                    <center><img style="width: 145px; height: 145px" class="img-responsive img-hover" src="../_images/lily.jpg" alt=""></center>
 				</a>
-					<center><h3 style="color: red">Lilly Collins</h3></center>
+					<center><h4 style="color: red">Lilly Collins</h4></center>
                 
             </div>
             <div class="col-md-8">
@@ -76,9 +76,9 @@
        <div class="row">
             <div class="col-md-3">
                 <a href="portfolio-item.html">
-                    <img style="width: 400px; height: 300px" class="img-responsive img-hover" src="../_images/kendall.jpg" alt="">
+                    <center><img style="width: 145px; height: 145px" class="img-responsive img-hover" src="../_images/kendall.jpg" alt=""></center>
 				</a>
-					<center><h3 style="color: red">Kendall Jenner</h3></center>
+					<center><h4 style="color: red">Kendall Jenner</h4></center>
                 
             </div>
             <div class="col-md-8">
@@ -97,9 +97,9 @@
         <div class="row">
             <div class="col-md-3">
                 <a href="portfolio-item.html">
-                    <img style="width: 400px; height: 300px" class="img-responsive img-hover" src="../_images/cara.jpg" alt="">
+                    <center><img style="width: 145px; height: 145px" class="img-responsive img-hover" src="../_images/cara.jpg" alt=""></center>
 				</a>
-					<center><h3 style="color: red">Cara Delevingne</h3></center>
+					<center><h4 style="color: red">Cara Delevingne</h4></center>
                 
             </div>
             <div class="col-md-8">
@@ -118,9 +118,9 @@
         <div class="row">
             <div class="col-md-3">
                 <a href="portfolio-item.html">
-                    <img style="width: 400px; height: 300px" class="img-responsive img-hover" src="../_images/abby.jpg" alt="">
+                    <center><img style="width: 145px; height: 145px" class="img-responsive img-hover" src="../_images/abby.jpg" alt=""></center>
 				</a>
-					<center><h3 style="color: red">Abby Johnson</h3></center>
+					<center><h4 style="color: red">Abby Johnson</h4></center>
                 
             </div>
             <div class="col-md-8">
