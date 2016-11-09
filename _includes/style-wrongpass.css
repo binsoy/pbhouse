@@ -6,12 +6,12 @@
 	transition: all 0.4s;
 }
 #cont{
-	padding: 15px 15px 15px 15px;
+	padding: 15px;
 }
 
 #logincont{
-	width:28%;
-	height:150%;
+	width:24%;
+	height:65%;
 	border:1px solid #ccc;
 	border-radius:4px;
 	margin-top: 50px;
@@ -22,6 +22,7 @@
 	font-size: 16px;
 	margin-right: 100px;
 	margin-top:15px; 
+	padding:12px;
 }
 
 #loginfields{
@@ -33,6 +34,7 @@
     height: 1px;
     color: #cccccc;
     background-color: #cccccc;
+    width:105%;
 }
 
 #textfields{
@@ -71,8 +73,12 @@
 }
 
 #passwrd input,
+#username{
+	width:100%;
+}
+
 #username input{
-	width:70%;
+	width:100%;
 }
 
 

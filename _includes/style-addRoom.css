@@ -1,0 +1,58 @@
+#bodyy{
+
+	float:left;
+	width:70%;
+	border:1px solid #c4c4c4;
+	height:100%;
+	padding:13px;
+}
+
+#content{
+	height:200%;
+}
+
+#my{
+    padding: 0 5% 0 5%;
+    margin-left: 7%
+}
+
+#content{
+	margin-left: 25%;
+	width:60%;
+	padding-right:10%;
+}
+
+#textfield2{
+	width:100%;
+	float:left;
+	margin:20px 0 20px 0;
+}
+
+#textfield2 label{
+	width:100%;
+}
+
+#textfield2 input{
+	width:89%;
+	margin-top: 2px;
+}
+
+#textfield2 span{
+	color:red;
+	margin-top: 2px;
+	font-weight: bold;
+}
+
+#textfield3{
+	float:left;
+}
+#textfield3 input{
+	width:100%;
+
+
+}
+
+#file{
+	width:100%;
+	margin:0px 0 20px 0;
+}

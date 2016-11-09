@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../room_management/roommngmt.php">Pastillo's Boarding House</a>
+                <a class="navbar-brand" href="#">Pastillo's Boarding House</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -22,7 +22,7 @@
                                 <a href="../room_management/roommngmt.php">Rooms</a>
                             </li>
                             <li>
-                                <a href="#">Add Room</a>
+                                <a href="../room_management/addroom.php">Add Room</a>
                             </li>
                         </ul>
                     </li>
@@ -33,7 +33,7 @@
                                 <a href="../boarder_management/boarder.php">Boarder list</a>
                             </li>
                             <li>
-                                <a href="../boarder_management/writeBoarder.php">Add Boarder</a>
+                                <a href="../boarder_management/writeboarder.php">Add Boarder</a>
                             </li>
                         </ul>
                     </li>
@@ -41,10 +41,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Billing<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="../billing_management/roomlist.php">Room Bills</a>
+                                <a href="#">Room Bills</a>
                             </li>
                             <li>
-                                <a href="../billing_management/addbill_admin.php">Bill management</a>
+                                <a href="#">Bill management</a>
                             </li>
                         </ul>
                     </li>

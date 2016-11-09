@@ -1,0 +1,103 @@
+*{
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#my{
+    padding: 0 5% 0 5%;
+    margin-left: 7%
+}
+
+
+#roomtop{
+    text-align: center;
+    margin-top: 3%;
+}
+
+#roomtop span:nth-child(1){
+    font-size: 200%;
+    font-weight: bold;
+    color: #650205;
+    margin: 0;
+}
+
+#roomtop hr{
+    width:50%;
+    margin-top:0;
+    margin-bottom:0;  
+}
+
+#roomtop span:nth-child(3){
+    margin-right: 7px;
+}
+
+#top{
+    padding:0px 6% 0 0;
+    margin-top: 3%;
+}
+
+#pop{
+    float:left;
+    padding:0;
+}
+
+#rate{
+    float: left;
+    width:100%;
+    padding: 0;
+}
+
+#pop span:nth-child(2),
+#rate span:nth-child(2){
+    color:red;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+#edit{
+    float:right;
+}
+
+#bigbox{
+    padding:0;
+    float:left;
+    margin-top: 1%;
+}
+
+#picbox{
+    padding:0 30px 0 0;
+}
+
+#issues{
+    float:left;
+}
+
+.issuee{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#rooms{
+    text-align: center;
+    margin: 50px 0 50px 0px;
+}
+
+#rooms div:nth-child(1){
+    color:#434343;
+    font-weight: bold;
+}
+
+#rooms div:nth-child(2){
+    width:55%;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+#rooms div:nth-child(2) a{
+    margin-right: 5%;
+    margin-top: 3px;
+}
+
