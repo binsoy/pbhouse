@@ -22,7 +22,7 @@
                                 <a href="../room_management/roommngmt.php">Rooms</a>
                             </li>
                             <li>
-                                <a href="../room_management/addroom.php">Add Room</a>
+                                <a href="#">Add Room</a>
                             </li>
                         </ul>
                     </li>
@@ -33,7 +33,7 @@
                                 <a href="../boarder_management/boarder.php">Boarder list</a>
                             </li>
                             <li>
-                                <a href="../boarder_management/writeboarder.php">Add Boarder</a>
+                                <a href="../boarder_management/writeBoarder.php">Add Boarder</a>
                             </li>
                         </ul>
                     </li>
@@ -41,10 +41,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Billing<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Room Bills</a>
+                                <a href="../billing_management/roomlist.php">Room Bills</a>
                             </li>
                             <li>
-                                <a href="#">Bill management</a>
+                                <a href="../billing_management/addbill_admin.php">Bill management</a>
                             </li>
                         </ul>
                     </li>
