@@ -58,10 +58,10 @@
                 <div class = "container-fluid" id="textfield">
                     <label>Room Status: </label>
                      <select class="form-control" id="room" name="status" required name="status">
-                        <option>Available</option>
-                        <option>Occupied</option>
-                        <option>Full</option>
-                        <option>Under Maintenance</option>
+                        <option value ='1'>Available</option>
+                        <option value ='2'>Occupied</option>
+                        <option value ='3'>Full</option>
+                        <option value ='4'>Under Maintenance</option>
                     </select>                
                 </div>
                 <div class = "container-fluid" id="textfield2">

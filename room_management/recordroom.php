@@ -11,22 +11,12 @@
 	$filename = basename($_FILES["filename"]["name"]);
 	$path = $target_dir . $filename;
 	
-	$queryA = "SELECT COUNT(roomID) FROM room";
+	$queryA = "SELECT * FROM room";
 	$resultA = mysql_query($queryA) or die(mysql_error());
-	$num = (int)$resultA;
-
-		if($num <= 4){
-			$floor = 1;
-		}else if($num <= 8 && $num > 4){
-			$floor = 2;
-		}else if($num > 8){
-			$floor = 3;
-		}
-	echo $num;
-	echo $floor;
+	$num = mysql_num_rows($resultA)+1;
 
 			
-	/*if($num <= 12){
+	if($num <= 12){
 		move_uploaded_file($_FILES["filename"]["tmp_name"], $path);		
 		if($num <= 4){
 			$floor = 1;
@@ -44,6 +34,6 @@
 		$_SESSION['notification'] = "Username already exists. \nPlease try again.";
 		header('Location: roommngmt.php');
 	}
-	*/
+	
 
 ?>
