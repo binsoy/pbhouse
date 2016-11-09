@@ -53,12 +53,11 @@
             <form action="recordroom.php" method="post" enctype="multipart/form-data">
                 <div class="container-fluid" id="file">
                       <label>Floor Plan: </label>
-                      <input class="form-control-file" file type="file" name="filename" name="floorplan" required>
+                      <input class="form-control-file" file type="file" name="filename" required>
                 </div>
                 <div class = "container-fluid" id="textfield">
                     <label>Room Status: </label>
-                     <select class="form-control" id="room" name="room" required name="status">
-                        <option disabled selected value> -- select an option -- </option>
+                     <select class="form-control" id="room" name="status" required name="status">
                         <option>Available</option>
                         <option>Occupied</option>
                         <option>Full</option>

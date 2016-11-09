@@ -45,12 +45,10 @@
 
 #textfield3{
 	float:left;
-	margin-bottom: 8%;
+	margin-bottom: 30px;
 }
 #textfield3 input{
 	width:100%;
-
-
 }
 
 #file{
