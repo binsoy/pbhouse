@@ -22,10 +22,11 @@
                                 <a href="../room_management/roommngmt.php">Rooms</a>
                             </li>
                             <li>
-                                <a href="#">Add Room</a>
+                                <a href="../room_management/addroom.php">Add Room</a>
                             </li>
                         </ul>
                     </li>
+                    
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boarder<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -33,7 +34,7 @@
                                 <a href="../boarder_management/boarder.php">Boarder list</a>
                             </li>
                             <li>
-                                <a href="../boarder_management/writeBoarder.php">Add Boarder</a>
+                                <a href="../boarder_management/writeboarder.php">Add Boarder</a>
                             </li>
                         </ul>
                     </li>
