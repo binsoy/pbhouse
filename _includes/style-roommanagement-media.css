@@ -1,7 +1,7 @@
 @media screen and (max-width: 1200px) {
     
     #my{
-		margin-left: 8%
+		margin-left: 8%;
 	}
 
 	#statcontain{
@@ -11,13 +11,13 @@
 	#statcontain span{
 		float:left;
 		font-size: 12px;
-		margin-right: 65px
+		margin-right: 65px;
 	}
 
 	#tablecont{
 		width:80%;
 		height:100%;
-		margin-left: 8%
+		margin-left: 8%;
 	}
 
 	#stattxt{
