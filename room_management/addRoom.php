@@ -70,8 +70,18 @@
                     <input type="number" name="rate">
                 </div>
                 <div class = "container-fluid" id="textfield3">
-                    <label>Maximum Population: </label>
+                    <label>Maximum Person(s) per room: </label>
                     <input type="number" name="population">
+                </div>
+                <div class = "container-fluid" id="textfield4">
+                    <label>Water billing rate: </label>
+                    <span>php</span>
+                    <input type="number" name="water">
+                </div>
+                <div class = "container-fluid" id="textfield5">
+                    <label>Electricity billing rate: </label>
+                    <span>php</span>
+                    <input type="number" name="elec">
                 </div>
                 <div id="buttons">
                     <center>

@@ -47,8 +47,33 @@
 	float:left;
 	margin-bottom: 30px;
 }
+
+#textfield4,
+#textfield5{
+	float:left;
+}
+
+#textfield5{
+	margin-bottom: 30px;
+}
+
 #textfield3 input{
+	width:100% !important;
+}
+
+#textfield4 input{
 	width:100%;
+}
+
+#textfield5 input{
+	width:100%;
+}
+
+#textfield4 span,
+#textfield5 span{
+	color: red;
+	font-weight: bold;
+	margin-top: 2%;
 }
 
 #file{

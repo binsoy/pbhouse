@@ -1,0 +1,30 @@
+@media screen and (max-width: 1200px) {
+    
+    #my{
+		margin-left: 8%
+	}
+
+	#statcontain{
+		margin-left: 5%;
+	}
+
+	#statcontain span{
+		float:left;
+		font-size: 12px;
+		margin-right: 65px
+	}
+
+	#tablecont{
+		width:80%;
+		height:100%;
+		margin-left: 8%
+	}
+
+	#stattxt{
+		float:left;
+		width:20%;
+	}
+	#statcontain span{
+		font-size: 85%;
+	}
+}

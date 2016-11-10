@@ -21,6 +21,7 @@
     <!-- Custom Fonts -->
     <link href="../_font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../_includes/style-roommanagement.css">
+    <link rel="stylesheet" type="text/css" href="../_includes/style-roommanagement-media.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,7 +34,7 @@
 <body onload="myFunction()" style="margin:0;">
 
     <div id="loader"></div>
-    <div style="display:none;" id="myDiv" class="animate-bottom">
+    <div style="display:none;" id="myDiv" class="animate-bottom container-fluid">
 
        <?php include("../_includes/navbar.php"); ?>
         <!-- Page Content -->
@@ -54,19 +55,19 @@
                 </div>
                 <!-- /.row -->
                 <div class="container-fluid" id="statcontain">
-                    <div>
+                    <div id ="stattxt">
                         <span>Available Rooms: <?php $available?></span>
                     </div>
-                    <div>
+                    <div id="stattxt">
                         <span>Occupied Rooms: <?php $occupied?></span>
                     </div>
-                    <div>
+                    <div id="stattxt">
                         <span>All Rooms: <?php $all?></span>
                     </div>
-                    <div>
+                    <div id="stattxt">
                         <span>Fully Occupied Rooms: <?php $full?></span>
                     </div>
-                    <div>
+                    <div id="stattxt">
                         <span>Under Maintenance Rooms: <?php $underm?></span>
                     </div>
                 </div>

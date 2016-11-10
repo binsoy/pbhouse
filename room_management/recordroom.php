@@ -6,6 +6,8 @@
 	$status = $_POST['status'];
 	$rate = $_POST['rate'];
 	$pop = $_POST['population'];
+	$water = $_POST['water'];
+	$elec = $_POST['elec'];
 
 	$target_dir = "../_images/floorplan/";
 	$filename = basename($_FILES["filename"]["name"]);
@@ -26,7 +28,7 @@
 			$floor = 3;
 		}
 		
-		$queryB = "INSERT INTO room(roomID, floor, state, capacity, floorplan, rent, water, electricity) VALUES('', '$floor', '$status', '$pop', '$path', '$rate', '2', '2')";
+		$queryB = "INSERT INTO room(roomID, floor, state, capacity, floorplan, rent, water, electricity) VALUES('', '$floor', '$status', '$pop', '$path', '$rate', '$water', '$elec')";
 		$resultB = mysql_query($queryB) or die(mysql_error());
 		header('Location: roommngmt.php');	
 	}
