@@ -27,4 +27,44 @@
 	#statcontain span{
 		font-size: 85%;
 	}
+	#t1a,#t1b,#t1c,
+	#t2a,#t2b,#t2c,
+	#t3a,#t3b,#t3c,
+	#t4a,#t4b,#t4c{
+	    padding: 20% 10% 20% 10%;
+	    height: 100%;
+	}
+
+	#t1a div:nth-child(1),#t1b div:nth-child(1),#t1c div:nth-child(1),
+	#t2a div:nth-child(1),#t2b div:nth-child(1),#t2c div:nth-child(1),
+	#t3a div:nth-child(1),#t3b div:nth-child(1),#t3c div:nth-child(1),
+	#t4a div:nth-child(1),#t4b div:nth-child(1),#t4c div:nth-child(1)
+	{
+		font-size: 100%;
+	}
+
+	#t1a div:nth-child(2),
+	#t1b div:nth-child(2),
+	#t1c div:nth-child(2),
+	#t2a div:nth-child(2),
+	#t2b div:nth-child(2),
+	#t2c div:nth-child(2),
+	#t3a div:nth-child(2),
+	#t3b div:nth-child(2),
+	#t3c div:nth-child(2),
+	#t4a div:nth-child(2),
+	#t4b div:nth-child(2),
+	#t4c div:nth-child(2){
+		font-size: 100%;
+	}
+
+	#t1a:hover,#t1b:hover,#t1c:hover,
+	#t2a:hover,#t2b:hover,#t2c:hover,
+	#t3a:hover,#t3b:hover,#t3c:hover,
+	#t4a:hover,#t4b:hover,#t4c:hover{
+		-ms-transform: rotate(-20deg); 
+	    -webkit-transform: rotate(-20deg); 
+	    transform: rotate(-20deg);
+	    padding: 20% 0 20% 0;
+	}
 }
