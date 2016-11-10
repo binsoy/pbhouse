@@ -1,5 +1,57 @@
 <?php
 	include '../_includes/connection.php';
+	
+	$roomID = $_GET['room'];
+	
+	switch($roomID) {
+		case 1:
+			$active1 = "active";
+			break;
+			
+		case 2:
+			$active2 = "active";
+			break;
+			
+		case 3:
+			$active3 = "active";
+			break;
+			
+		case 4:
+			$active4 = "active";
+			break;
+			
+		case 5:
+			$active5 = "active";
+			break;
+			
+		case 6:
+			$active6 = "active";
+			break;
+			
+		case 7:
+			$active7 = "active";
+			break;
+			
+		case 8:
+			$active8 = "active";
+			break;
+			
+		case 9:
+			$active9 = "active";
+			break;
+			
+		case 10:
+			$active10 = "active";
+			break;
+			
+		case 11:
+			$active11 = "active";
+			break;
+			
+		case 12:
+			$active12 = "active";
+			break;
+	}
 ?>
 <html lang="en">
 
@@ -53,7 +105,7 @@
         </div>
         <!-- /.row -->
 		<?php
-			$queryA = "SELECT * FROM tenant WHERE roomID=1";
+			$queryA = "SELECT * FROM tenant WHERE roomID='$roomID'";
 			$resultA = mysql_query($queryA) or die(mysql_error());
 			while($rowA = mysql_fetch_array($resultA)) {
 				$tenantID = $rowA['tenantID'];
@@ -97,40 +149,51 @@
             <div class="col-lg-12">
                 <ul class="pagination">
                     
-                    <li class="active">
+                    <li class="<?php echo $active1; ?>">
                         <a href="boarder.php">1</a>
                     </li>
-                    <li>
+					
+                    <li class="<?php echo $active2; ?>">
                         <a href="boarder_page.php?room=2">2</a>
                     </li>
-                    <li>
+					
+                    <li class="<?php echo $active3; ?>">
                         <a href="boarder_page.php?room=3">3</a>
                     </li>
-                    <li>
+					
+                    <li class="<?php echo $active4; ?>">
                         <a href="boarder_page.php?room=4">4</a>
                     </li>
-                    <li>
+					
+                    <li class="<?php echo $active5; ?>">
                         <a href="boarder_page.php?room=5">5</a>
                     </li>
-					<li>
+					
+					<li class="<?php echo $active6; ?>">
                         <a href="boarder_page.php?room=6">6</a>
                     </li>
-					<li>
+					
+					<li class="<?php echo $active7; ?>">
                         <a href="boarder_page.php?room=7">7</a>
                     </li>
-					<li>
+					
+					<li class="<?php echo $active8; ?>">
                         <a href="boarder_page.php?room=8">8</a>
                     </li>
-					<li>
+					
+					<li class="<?php echo $active9; ?>">
                         <a href="boarder_page.php?room=9">9</a>
                     </li>
-					<li>
+					
+					<li class="<?php echo $active10; ?>">
                         <a href="boarder_page.php?room=10">10</a>
                     </li>
-					<li>
+					
+					<li class="<?php echo $active11; ?>">
                         <a href="boarder_page.php?room=11">11</a>
                     </li>
-					<li>
+					
+					<li class="<?php echo $active12; ?>">
                         <a href="boarder_page.php?room=12">12</a>
                     </li>
                     
