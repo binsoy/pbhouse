@@ -1,7 +1,25 @@
 <?php
 	session_start();
-	$warning = $_SESSION['notification'];
-	$_SESSION['notification'] = NULL;
+	include '../_includes/connection.php';
+	
+	$tenantID = $_GET['id'];
+	$query = "SELECT * FROM tenant WHERE tenantID='$tenantID'";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result);
+
+	$fname = $row['fname'];
+	$lname = $row['lname'];
+	$address = $row['address'];
+	$contactNo = $row['contactNum'];
+	$username = $row['username'];
+	$gender = $row['gender'];
+	$bdate = $row['birthDate'];
+	$emergencyContact = $row['emergencyContactNum'];
+	$email = $row['emailAddress'];
+	$dateStart = $row['dateStart'];
+	$displayPic = $row['displayPic'];
+	$roomID = $row['roomID'];
+	
 ?>
 <html lang="en">
 
@@ -60,11 +78,11 @@
         <!-- M A I N   C O N T E N T -->
         <div class="row">
             <div class="form-group" style="margin-left: 20px; margin-right: 20px;">
-			<form action="recordBoarder.php" method="post" enctype="multipart/form-data">
+			<form action="#" method="post" enctype="multipart/form-data">
 						<label for="fname">First Name</label>
-						<input type="text" class="form-control" id="fname" name="fname" required /> <br />
+						<input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>" required /> <br />
 						<label for="lname">Last Name</label>
-						<input type="text" class="form-control" id="lname" name="lname" required /> <br />
+						<input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>" required /> <br />
 						<label for="gender">Sex</label>
 						<select class="form-control" id="gender" name="gender" required>
 						  <option disabled selected value> -- select an option -- </option>
@@ -72,19 +90,21 @@
 						  <option value="2">Female</option>
 						</select> <br />
 						<label for="bdate">Birth Date</label>
-						<input type="text" class="form-control" id="bdate" name="bdate" required /> <br />
+						<input type="text" class="form-control" id="bdate" name="bdate" value="<?php echo $bdate; ?>" required /> <br />
 						<label for="phoneNo">Mobile Number</label>
-						<input type="text" class="form-control" id="phoneNo" name="phoneNo" pattern="[0-9]{11,}" title="Mobile number must be 11 digits long" maxlength="11" required /> <br />
+						<input type="text" class="form-control" id="phoneNo" name="phoneNo" pattern="[0-9]{11,}" title="Mobile number must be 11 digits long" maxlength="11" value="<?php echo $contactNo; ?>" required /> <br />
 						<label for="permAddress">Permanent Address</label>
-						<input type="text" class="form-control" id="permAddress" name="permAddress" /> <br />
+						<input type="text" class="form-control" id="permAddress" name="permAddress" value="<?php echo $address; ?>" /> <br />
 						<label for="emailAddress">Email Address</label>
-						<input type="email" class="form-control" id="emailAddress" name="emailAddress" /> <br />
+						<input type="email" class="form-control" id="emailAddress" name="emailAddress" value="<?php echo $email; ?>" required/> <br />
 						<label for="telNo">Emergency Contact Person</label>
-						<input type="text" class="form-control" id="telNo" name="telNo" /> <br />
+						<input type="text" class="form-control" id="telNo" name="telNo" value="<?php echo $emergencyContact; ?>" required /> <br />
 						<label for="username">Username</label>
-						<input type="text" class="form-control" id="username" name="username" required /> <br />
-						<label for="passwrd">Password</label>
-						<input type="password" class="form-control" id="passwrd" name="passwrd" required /> <br />
+						<input type="text" class="form-control" id="username" name="username" value="<?php echo $username; ?>" required /> <br />
+						<label for="newpasswrd">New Password</label>
+						<input type="password" class="form-control" id="newpasswrd" name="newpasswrd" placeholder="optional" /> <br />
+						<label for="oldpasswrd">Old Password</label>
+						<input type="password" class="form-control" id="oldpasswrd" name="oldpasswrd" required /> <br />
 
 						<label for="room">Room Occupied</label>
 						<select class="form-control" id="room" name="room" required>
@@ -104,7 +124,7 @@
 						</select> <br />
 						
 						<label for="filename">Profile Picture</label>
-						<input type="file" class="file" name="filename" required id="filename"> </br>
+						<input type="file" class="file" name="filename" required id="filename" > <br />
 						
 						<center><button type="submit" class="btn btn-primary">Submit</button></center>
 					</form>
@@ -137,11 +157,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../_js/bootstrap.min.js"></script>
 	
-	<?php
-			if($warning != NULL) {
-				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
-			}
-	?>
 </body>
 
 </html>

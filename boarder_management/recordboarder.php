@@ -16,6 +16,10 @@
 	$target_dir = "uploads/";
 	$filename = basename($_FILES["filename"]["name"]);
 	$path = $target_dir . $filename;
+
+	if(empty($emergencyNo)) {
+		$emergencyNo = "N/A";	
+	}
 	
 	$queryA = "SELECT * FROM tenant WHERE username='$username'";
 	$resultA = mysql_query($queryA) or die(mysql_error());
