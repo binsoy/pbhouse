@@ -28,12 +28,9 @@
 	margin:20px 0 20px 0;
 }
 
-#textfield2 label{
-	width:100%;
-}
 
 #textfield2 input{
-	width:89%;
+	width:100%;
 	margin-top: 2px;
 }
 
@@ -45,16 +42,22 @@
 
 #textfield3{
 	float:left;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
+	width:100%;
 }
 
 #textfield4,
 #textfield5{
 	float:left;
+	width:100%;
+}
+
+#textfield4{
+	margin-bottom: 15px;
 }
 
 #textfield5{
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 
 #textfield3 input{
@@ -79,4 +82,12 @@
 #file{
 	width:100%;
 	margin:0px 0 20px 0;
+}
+
+#buttons button:nth-child(1){
+	margin-right: 10px;
+} 
+#buttons button:nth-child(1),
+#buttons button:nth-child(2){
+	width:30%;
 }
