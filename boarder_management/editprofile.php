@@ -2,6 +2,9 @@
 	session_start();
 	include '../_includes/connection.php';
 	
+	$warning = $_SESSION['notification'];
+	$_SESSION['notification'] = NULL;
+
 	$tenantID = $_GET['id'];
 	$query = "SELECT * FROM tenant WHERE tenantID='$tenantID'";
 	$result = mysql_query($query) or die(mysql_error());
@@ -67,7 +70,8 @@
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li><a href="boarder.php">Boarder Management</a></li>
-                    <li>Add Boarder</li>
+                    <li><a href="userprof.php?id=<?php echo $tenantID; ?>"><?php echo $fname . " " . $lname; ?></a></li>
+					<li>Edit Profile</li>
                 </ol>
             </div>
         </div>
@@ -78,7 +82,7 @@
         <!-- M A I N   C O N T E N T -->
         <div class="row">
             <div class="form-group" style="margin-left: 20px; margin-right: 20px;">
-			<form action="#" method="post" enctype="multipart/form-data">
+			<form action="recordprofile.php?id=<?php echo $tenantID; ?>" method="post" enctype="multipart/form-data">
 						<label for="fname">First Name</label>
 						<input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>" required /> <br />
 						<label for="lname">Last Name</label>
@@ -156,7 +160,11 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../_js/bootstrap.min.js"></script>
-	
+	<?php
+			if($warning != NULL) {
+				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
+			}
+	?>
 </body>
 
 </html>

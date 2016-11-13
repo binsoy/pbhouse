@@ -17,10 +17,10 @@
 	$filename = basename($_FILES["filename"]["name"]);
 	$path = $target_dir . $filename;
 
-	if(empty($emergencyNo)) {
-		$emergencyNo = "N/A";	
+	if(empty($permAddress)) {
+		$permAddress = "N/A";
 	}
-	
+
 	$queryA = "SELECT * FROM tenant WHERE username='$username'";
 	$resultA = mysql_query($queryA) or die(mysql_error());
 	$rowA = mysql_fetch_array($resultA);
@@ -34,8 +34,8 @@
 		header('Location: boarder.php');
 	}
 	else {
-		$_SESSION['notification'] = "Username already exists. \nPlease try again.";
-		header('Location: boarder.php');
+		$_SESSION['notification'] = "Username already exists. Please try again.";
+		header('Location: writeboarder.php');
 	}
 	
 

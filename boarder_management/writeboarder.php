@@ -34,6 +34,7 @@
 </head>
 
 <body>
+	
 
     <!-- Navigation -->
     <?php include_once("../_includes/navbar.php"); ?>
@@ -104,7 +105,7 @@
 						</select> <br />
 						
 						<label for="filename">Profile Picture</label>
-						<input type="file" class="file" name="filename" required id="filename"> </br>
+						<input type="file" class="file" name="filename" required id="filename"> <br />
 						
 						<center><button type="submit" class="btn btn-primary">Submit</button></center>
 					</form>
@@ -136,12 +137,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../_js/bootstrap.min.js"></script>
-	
 	<?php
 			if($warning != NULL) {
 				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
 			}
 	?>
+	
 </body>
 
 </html>

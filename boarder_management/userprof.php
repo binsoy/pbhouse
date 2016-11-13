@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include '../_includes/connection.php';
 	include '../_includes/functions.php';
 
@@ -18,7 +19,6 @@
 	$username = $row['username'];
 	$address = $row['address'];
 
-	session_start();
 	$warning = $_SESSION['notification'];
 	$_SESSION['notification'] = NULL;
 

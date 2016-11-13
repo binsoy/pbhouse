@@ -1,4 +1,8 @@
 <?php
+	session_start();
+	$warning = $_SESSION['notification'];
+	$_SESSION['notification'] = NULL;
+
 	include '../_includes/connection.php';
 ?>
 <html lang="en">
@@ -158,7 +162,11 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../_js/bootstrap.min.js"></script>
-
+	<?php
+			if($warning != NULL) {
+				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
+			}
+	?>
 </body>
 
 </html>
