@@ -13,6 +13,7 @@
 	$rent = $row['rent'];
 	$water = $row['water'];
 	$elec = $row['electricity'];
+	$roomID = $row['roomID']
 ?>
 
    <div class="modal-dialog">
@@ -57,6 +58,8 @@
               <input type="number" name="elec" class="form-control" value=<?php echo $elec?> required>
             </div>
             <div id="buttonsc" class="container-fluid">
+            <input type="hidden" name="floor" value =<?php echo $floor?>>
+            <input type="hidden" name="roomID" value =<?php echo $roomID?>>
               <button type="submit" class="btn btn-success">Update</button>
               <button type="submit" class="btn btn-danger btn-default" data-dismiss="modal">Cancel</button>
             </div>
