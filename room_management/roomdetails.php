@@ -1,3 +1,24 @@
+<?php
+  include '../_includes/connection.php';
+
+  $room = $_GET['room'];
+
+  $query = "SELECT * FROM room WHERE roomID='$room'";
+  $result = mysql_query($query) or die(mysql_error());
+  $row = mysql_fetch_array($result);
+
+  $floor = $row['floor'];
+  $state = $row['state'];
+  $capacity = $row['capacity'];
+  $floorplan = $row['floorplan'];
+  $rent = $row['rent'];
+  $water = $row['water'];
+  $elec = $row['electricity'];
+  $roomID = $row['roomID'];
+  $path = $row['floorplan'];
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,21 +77,21 @@
       			<span>Room No. <?php echo $_GET['room'];?></span>
       			<hr>
       			<span>1st floor</span>
-      			<span>status: <?php $status;?></span>
+      			<span>status: <?php echo $state;?></span>
       		</div>
 
       		<div class="container-fluid" id="top">
       			<div class="container-fluid">
 	      			<div class="container-fluid" id="pop">
 	      				<span>Population: </span>
-	      				<span><?php echo '2/2';?></span>
+	      				<span><?php echo $capacity?></span>
 	      				<a href="#">Boarders</a>
 	      			</div>
 	      		</div>
 	      		<div class="container-fluid">
 	      			<div class="container-fluid" id="rate">
-	      				<span>rate: </span>
-	      				<span>PHP <? $price?></span>
+	      				<span>rate:</span>
+	      				<span>php <?php echo $rent?></span>
 	      				<div class="container-fluid" id="edit">
 	      					<button type="button" class="btn btn-default btn-lg" id="myBtn">Edit Details</button>
 	      				</div>
@@ -81,7 +102,7 @@
 
       		<div class="container-fluid" id="bigbox">
       			<div class="container-fluid" id="picbox">
-      				<img src="../_images/floorplan/fp.png" width="1000px" height="280px" class="img-responsive">
+      				<img src="<?php echo $path;?>" width="1000px" height="280px" class="img-responsive">
       			</div>
       		</div>
 
