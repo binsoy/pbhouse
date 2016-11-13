@@ -72,7 +72,7 @@
 	      				<span>rate: </span>
 	      				<span>PHP <? $price?></span>
 	      				<div class="container-fluid" id="edit">
-	      					<a href="#">Edit details</a>
+	      					<button type="button" class="btn btn-default btn-lg" id="myBtn">Edit Details</button>
 	      				</div>
 	      			</div>
       			</div>
@@ -117,12 +117,10 @@
       			</div>
       		</div>
       	</div>
-
-      
         <div class="container-fluid" id="foot">
             <hr>
         </div>
-	    <div class="container">
+	    <div class="container-fluid">
 	        <footer>
 	            <div class="row">
 	                <div class="col-lg-12">
@@ -134,6 +132,11 @@
 	    </div>
     </div>
     <!-- /.container -->
+
+    <!-- MMMMMMMMMMOODAAAAAAAAAAAAL-->
+  <div class="modal fade" id="myModal" role="dialog">
+    <?php include_once("editroom.php"); ?>
+  </div>
 
     
     
@@ -150,17 +153,14 @@
 <script type="text/javascript">
 window.location.hash = 'pointer'
 
-  var uri = window.location.toString();
-if (uri.indexOf("?") > 0 ) {
-    var clean_uri = uri.substring(0, uri.indexOf("?"));
 
-    var hash_pos = location.href.indexOf("#");
-    if (hash_pos > 0) {
-        var hash = location.href.substring(hash_pos, location.href.length);
-        clean_uri += hash;
-    }   
-    window.history.replaceState({}, document.title, clean_uri);
-}
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+
+
 </script>
 
 </html>

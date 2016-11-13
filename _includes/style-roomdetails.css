@@ -101,3 +101,25 @@
     margin-top: 3px;
 }
 
+
+/*==========================MODA>===============*/
+.modal-header, h4, .close {
+      background-color: #2196F3;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+
+  #buttonsc{
+    text-align: center;
+  }
+
+  #buttonsc button:nth-child(1){
+    width:20%;
+    margin-right: 10px;
+  }  
+
+  #buttonsc button:nth-child(2){
+    width:20%;
+  }
+

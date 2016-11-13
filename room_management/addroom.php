@@ -52,7 +52,7 @@
           <div class="container-fluid" id="bodyy">
             <form action="recordroom.php" method="post" enctype="multipart/form-data">
                 <div class="container-fluid" id="file">
-                      <label>Floor Plan: </label>
+                      <label>Floor Plan and Amenities: </label>
                       <input class="form-control-file" file type="file" name="filename" required>
                 </div>
                 <div class = "container-fluid" id="textfield">
