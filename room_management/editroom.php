@@ -13,8 +13,9 @@
 	$floorplan = $row['floorplan'];
 	$rent = $row['rent'];
 	$water = $row['water'];
-	$elec = $row['electricity'];
-	$roomID = $row['roomID']
+	$cost = $row['wattCost'];
+	$roomID = $row['roomID'];
+  $wattage = $row['wattage'];
 ?>
 
    <div class="modal-dialog">
@@ -49,14 +50,19 @@
               <input class="form-control" type="number" name="population" value=<?php echo $capacity?> required>
             </div>
             <div class="form-group">
-              <label>Water billing rate: </label>
+              <label>Water fee: </label>
               <span>php</span>
               <input class="form-control" type="number" name="water" value=<?php echo $water?> required>
             </div>
             <div class="form-group">
-              <label>Electricity billing rate: </label>
+              <label>Wattcost: </label>
               <span>php</span>
-              <input type="number" name="elec" class="form-control" value=<?php echo $elec?> required>
+              <input type="number" name="wattcost" class="form-control" value=<?php echo $cost?> required>
+            </div>
+            <div class="form-group">
+              <label>wattage: </label>
+              <span>php</span>
+              <input type="number" name="wattage" class="form-control" value=<?php echo $wattage?> required>
             </div>
             <div id="buttonsc" class="container-fluid">
             <input type="hidden" name="floor" value =<?php echo $floor?>>

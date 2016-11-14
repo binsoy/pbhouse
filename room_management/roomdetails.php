@@ -13,7 +13,6 @@
   $floorplan = $row['floorplan'];
   $rent = $row['rent'];
   $water = $row['water'];
-  $elec = $row['electricity'];
   $roomID = $row['roomID'];
   $path = $row['floorplan'];
   
@@ -58,7 +57,7 @@
     		<!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-10">
-                <h1 class="page-header">Rooms</h1>
+                <h1 class="page-header">Room</h1>
 				
                 <ol id="pointer"  class="breadcrumb">
                     <li><a href="Roommngmt.php">Home</a>
@@ -70,14 +69,28 @@
             </div>
         </div>
         <!-- /.row -->
+        <?php if($state == 1){
+                    $stat = 'available';
+                    $color = '#6aca6b';
+                }else if($state == 2){
+                    $stat = 'Occupied';
+                    $color = '#4fa8f0';
+                }else if($state == 3){
+                    $stat = 'Full';
+                    $color = '#f93e3e';
+                }else{
+                    $stat = 'Under Maintenance';
+                    $color = '#fd9985';
+                }
+        ?>
         
-      
+      <?php if($roomID != NULL){?>
       	<div class="container-fluid" id="contain">
       		<div class="container-fluid" id="roomtop">
       			<span>Room No. <?php echo $_GET['room'];?></span>
       			<hr>
-      			<span>1st floor</span>
-      			<span>status: <?php echo $state;?></span>
+      			<span>Floor: <?php echo $floor?></span>
+            <span style="color:<?php echo $color?>">status: <?php echo $stat?></span>
       		</div>
 
       		<div class="container-fluid" id="top">
@@ -85,7 +98,7 @@
 	      			<div class="container-fluid" id="pop">
 	      				<span>Population: </span>
 	      				<span><?php echo $capacity?></span>
-	      				<a href="#">Boarders</a>
+	      				<a href="../boarder_management/boarder.php?room=<?php echo $room?>">Boarders</a>
 	      			</div>
 	      		</div>
 	      		<div class="container-fluid">
@@ -123,25 +136,31 @@
       				<span>ROOMS</span>
       			</div>
       			<div class="container-fluid">
-      				<a href="#">NO. 1</a>
-      				<a href="#">NO. 2</a>
-      				<a href="#">NO. 3</a>
-      				<a href="#">NO. 4</a>
-      				<a href="#">NO. 5</a>
-      				<a href="#">NO. 6</a>
-      				<a href="#">NO. 7</a>
-      				<a href="#">NO. 8</a>
-      				<a href="#">NO. 9</a>
-      				<a href="#">NO. 10</a>
-      				<a href="#">NO. 11</a>
-      				<a href="#">NO. 12</a>
+      				<a href="roomdetails.php?room=1">NO. 1</a>
+      				<a href="roomdetails.php?room=2">NO. 2</a>
+      				<a href="roomdetails.php?room=3">NO. 3</a>
+      				<a href="roomdetails.php?room=4">NO. 4</a>
+      				<a href="roomdetails.php?room=5">NO. 5</a>
+      				<a href="roomdetails.php?room=6">NO. 6</a>
+      				<a href="roomdetails.php?room=7">NO. 7</a>
+      				<a href="roomdetails.php?room=8">NO. 8</a>
+      				<a href="roomdetails.php?room=9">NO. 9</a>
+      				<a href="roomdetails.php?room=10">NO. 10</a>
+      				<a href="roomdetails.php?room=11">NO. 11</a>
+      				<a href="roomdetails.php?room=12">NO. 12</a>
       			</div>
       		</div>
       	</div>
+      <?php }else{?>
+        <div class="container fluid">
+              <h3>Room no.<?php echo $room?> is not yet registered</h3>
+              <a href="addroom.php?room=3#pointer">Click here to add a room</a>
+        </div>
+      <?php }?>
         <div class="container-fluid" id="foot">
             <hr>
         </div>
-	    <div class="container-fluid">
+	    <div class="container-fluid" id="body2">
 	        <footer>
 	            <div class="row">
 	                <div class="col-lg-12">

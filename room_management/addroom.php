@@ -74,14 +74,19 @@
                     <input class ="form-control" type="number" name="population">
                 </div>
                 <div class = "container-fluid" id="textfield4">
-                    <label>Water billing rate: </label>
+                    <label>Water fee: </label>
                     <span>php</span>
                     <input class ="form-control" type="number" name="water">
                 </div>
                 <div class = "container-fluid" id="textfield5">
-                    <label>Electricity billing rate: </label>
+                    <label>wattcost: </label>
                     <span>php</span>
-                    <input class ="form-control" type="number" name="elec">
+                    <input class ="form-control" type="number" name="wattcost">
+                </div>
+                <div class = "container-fluid" id="textfield5">
+                    <label>Wattage: </label>
+                    <span>php</span>
+                    <input class ="form-control" type="number" name="wattage">
                 </div>
                 <div id="buttons">
                     <center>
