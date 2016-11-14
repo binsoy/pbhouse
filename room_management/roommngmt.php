@@ -15,7 +15,7 @@
 
           $queryA = "SELECT * FROM room";
           $resultA = mysql_query($queryA) or die(mysql_error());
-          $num = mysql_num_rows($resultA);
+          $num = mysql_num_rows($resultA)+1;
 
           /*$floor = $row['floor'];
           $state = $row['state'];
@@ -25,6 +25,17 @@
           $water = $row['water'];
           $roomID = $row['roomID'];
           $path = $row['floorplan'];*/
+          $resultc=mysql_query("SELECT count(*) as total from room WHERE state = 1");
+          $available=mysql_fetch_assoc($resultc);
+
+          $resultd=mysql_query("SELECT count(*) as total from room WHERE state = 2");
+          $occupied=mysql_fetch_assoc($resultd);
+
+          $resulte=mysql_query("SELECT count(*) as total from room WHERE state = 3");
+          $full=mysql_fetch_assoc($resulte);
+
+          $resultf=mysql_query("SELECT count(*) as total from room WHERE state = 4");
+          $underm=mysql_fetch_assoc($resultf);
     ?>
 <html lang="en">
 
@@ -69,7 +80,7 @@
                 <!-- Page Heading/Breadcrumbs -->
                 <div class="row">
                     <div class="col-lg-10">
-                        <h1 class="page-header">Rooms></h1>
+                        <h1 class="page-header">Rooms</h1>
                         
                         <ol id="pointer" class="breadcrumb">
                             <li><a href="Roommngmt.php">Home</a>
@@ -82,19 +93,19 @@
                 <!-- /.row -->
                 <div class="container-fluid" id="statcontain">
                     <div id ="stattxt">
-                        <span>Available Rooms: <?php $available?></span>
+                        <span>Available Rooms: <?php echo $available['total'];?></span>
                     </div>
                     <div id="stattxt">
-                        <span>Occupied Rooms: <?php $occupied?></span>
+                        <span>Occupied Rooms: <?php echo $occupied['total'];?></span>
                     </div>
                     <div id="stattxt">
                         <span>All Rooms: 12</span>
                     </div>
                     <div id="stattxt">
-                        <span>Fully Occupied Rooms: <?php $full?></span>
+                        <span>Fully Occupied Rooms: <?php echo $full['total'];?></span>
                     </div>
                     <div id="stattxt">
-                        <span>Under Maintenance Rooms: <?php $underm?></span>
+                        <span>Under Maintenance Rooms: <?php echo $underm['total'];?></span>
                     </div>
                 </div>
 
@@ -122,7 +133,7 @@
                                         $color1 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color1?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
                                 <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
@@ -147,7 +158,7 @@
                                         $color2 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color2?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color2?>">
                                 <span>status: <?php echo $stat2?></span>
                             </div>
                         </div></a>
@@ -172,7 +183,7 @@
                                         $color3 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color3?>">
+                            <div class="container-fluid"  id="txt" style="color:<?php echo $color3?>">
                                 <span>status: <?php echo $stat3?></span>
                             </div>
                         </div></a>
@@ -199,7 +210,7 @@
                                         $color4 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color4?>">
+                            <div class="container-fluid"  id="txt" style="color:<?php echo $color4?>">
                                 <span>status: <?php echo $stat4?></span>
                             </div>
                         </div></a>
@@ -224,7 +235,7 @@
                                         $color5 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color5?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color5?>">
                                 <span>status: <?php echo $stat5?></span>
                             </div>
                         </div></a>
@@ -249,7 +260,7 @@
                                         $color6 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color6?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color6?>">
                                 <span>status: <?php echo $stat6?></span>
                             </div>
                         </div></a>
@@ -276,7 +287,7 @@
                                         $color7 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color7?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color7?>">
                                 <span>status: <?php echo $stat7?></span>
                             </div>
                         </div></a>
@@ -301,7 +312,7 @@
                                         $color8 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color8?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color8?>">
                                 <span>status: <?php echo $stat8?></span>
                             </div>
                         </div></a>
@@ -326,7 +337,7 @@
                                         $color9 = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $color9?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color9?>">
                                 <span>status: <?php echo $stat9?></span>
                             </div>
                         </div>
@@ -353,7 +364,7 @@
                                         $colora = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $colora?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $colora?>">
                                 <span>status: <?php echo $stata?></span>
                             </div>
                         </div></a>
@@ -378,7 +389,7 @@
                                         $colorb = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $colorb?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $colorb?>">
                                 <span>status: <?php echo $statb?></span>
                             </div>
                         </div></a>
@@ -403,7 +414,7 @@
                                         $colorc = '#fd9985';
                                     }
                             ?>
-                            <div class="container-fluid" style="color:<?php echo $colorc?>">
+                            <div class="container-fluid" id="txt" style="color:<?php echo $colorc?>">
                                 <span>status: <?php echo $statc?></span>
                             </div>  
                         </div></a>

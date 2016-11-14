@@ -58,6 +58,10 @@
 	margin-left: 2%
 }
 
+#txt{
+	font-weight: bold;
+}
+
 #t1,
 #t2,
 #t3,
@@ -115,10 +119,10 @@
 #t2a:hover,#t2b:hover,#t2c:hover,
 #t3a:hover,#t3b:hover,#t3c:hover,
 #t4a:hover,#t4b:hover,#t4c:hover{
-	-ms-transform: rotate(-20deg); 
-    -webkit-transform: rotate(-20deg); 
-    transform: rotate(-20deg);
-    background-color: #1986eb;
+	-ms-transform: rotate(-8deg); 
+    -webkit-transform: rotate(-8deg); 
+    transform: rotate(-8deg);
+    background-color: #DCE775;
     padding: 40px 30px 30px 30px;
 }
 
