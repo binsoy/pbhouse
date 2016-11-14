@@ -1,5 +1,6 @@
 <!DOCTYPE html>
     <?php 
+        error_reporting(0);
         include '../_includes/connection.php';
         include '../_includes/navbar.php';
 
@@ -7,7 +8,7 @@
           $result = mysql_query($query) or die(mysql_error());
           $row = mysql_fetch_array($result);*/
 
-          $query =  mysql_query("SELECT * FROM room ORDER BY roomID");
+          $query =  mysql_query("SELECT * FROM room ORDER BY roomID") or die(mysql_error());;
           $result = array();
           while($line = mysql_fetch_array($query, MYSQL_ASSOC)){
             $result[] = $line;
@@ -114,10 +115,10 @@
                     <div class="container-fluid col-lg-3" id="t1">
                         <a href="roomdetails.php?room=1"><div class="container-fluid" id="t1a">
                             <div class="container-fluid" onclick="roomdetails.php">
-                                <span>Room No. <?php echo $result[0]['roomID']?></span>
+                                <span>Room No.1</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[0]['floor']?>st floor</span>
+                                <span>1st floor</span>
                             </div>
                              <?php if($result[0]['state'] == 1){
                                         $stat1 = 'available';
@@ -139,10 +140,10 @@
                         </div></a>
                         <a href="roomdetails.php?room=5"><div class="container-fluid" id="t1b">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[4]['roomID']?></span>
+                                <span>Room No.3</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[4]['floor']?>nd floor</span>
+                                <span>2nd floor</span>
                             </div>
                             <?php if($result[4]['state'] == 1){
                                         $stat2 = 'available';
@@ -164,10 +165,10 @@
                         </div></a>
                         <a href="roomdetails.php?room=9"><div class="container-fluid" id="t1c">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[8]['roomID']?></span>
+                                <span>Room No.7</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[8]['floor']?>rd floor</span>
+                                <span>3rd floor</span>
                             </div>
                             <?php if($result[8]['state'] == 1){
                                         $stat3 = 'available';
@@ -191,10 +192,10 @@
                     <div class="container-fluid col-lg-3" id="t2">
                         <a href="roomdetails.php?room=2"><div class="container-fluid" id="t2a">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[1]['roomID']?></span>
+                                <span>Room No.2</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[1]['floor']?>st floor</span>
+                                <span>1st floor</span>
                             </div>
                             <?php if($result[1]['state'] == 1){
                                         $stat4 = 'available';
@@ -216,10 +217,10 @@
                         </div></a>
                          <a href="roomdetails.php?room=6"><div class="container-fluid" id="t2b">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[5]['roomID']?></span>
+                                <span>Room No.6</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[5]['floor']?>nd floor</span>
+                                <span>2nd floor</span>
                             </div>
                             <?php if($result[5]['state'] == 1){
                                         $stat5 = 'available';
@@ -241,10 +242,10 @@
                         </div></a>
                         <a href="roomdetails.php?room=10"><div class="container-fluid" id="t2c">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[9]['roomID']?></span>
+                                <span>Room No.10</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[9]['floor']?>rd floor</span>
+                                <span>3rd floor</span>
                             </div>
                             <?php if($result[9]['state'] == 1){
                                         $stat6 = 'available';
@@ -268,10 +269,10 @@
                     <div class="container-fluid col-lg-3" id="t3">
                         <a href="roomdetails.php?room=3"><div class="container-fluid" id="t3a">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[2]['roomID']?></span>
+                                <span>Room No.3</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[2]['floor']?>st floor</span>
+                                <span>1st floor</span>
                             </div>
                             <?php if($result[2]['state'] == 1){
                                         $stat7 = 'available';
@@ -293,10 +294,10 @@
                         </div></a>
                         <a href="roomdetails.php?room=7"><div class="container-fluid" id="t3b">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[6]['roomID']?></span>
+                                <span>Room No.7</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[6]['floor']?>nd floor</span>
+                                <span>2nd floor</span>
                             </div>
                             <?php if($result[6]['state'] == 1){
                                         $stat8 = 'available';
@@ -318,10 +319,10 @@
                         </div></a>
                         <a href="roomdetails.php?room=11"><div class="container-fluid" id="t3c">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[10]['roomID']?></span>
+                                <span>Room No.11</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[10]['floor']?>rd floor</span>
+                                <span>3rd floor</span>
                             </div>
                             <?php if($result[10]['state'] == 1){
                                         $stat9 = 'available';
@@ -345,10 +346,10 @@
                     <div class="container-fluid col-lg-3" id="t4">
                         <a href="roomdetails.php?room=4"><div class="container-fluid" id="t4a">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[3]['roomID']?></span>
+                                <span>Room No.4</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[3]['floor']?>st floor</span>
+                                <span>1st floor</span>
                             </div>
                             <?php if($result[3]['state'] == 1){
                                         $stata = 'available';
@@ -370,10 +371,10 @@
                         </div></a>
                         <a href="roomdetails.php?room=8"><div class="container-fluid" id="t4b">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[7]['roomID']?></span>
+                                <span>Room No.8</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[7]['floor']?>nd floor</span>
+                                <span>2nd floor</span>
                             </div>
                             <?php if($result[7]['state'] == 1){
                                         $statb = 'available';
@@ -395,10 +396,10 @@
                         </div></a>
                         <a href="roomdetails.php?room=12"><div class="container-fluid" id="t4c">
                             <div class="container-fluid">
-                                <span>Room No.<?php echo $result[11]['roomID']?></span>
+                                <span>Room No.12</span>
                             </div>
                             <div class="container-fluid">
-                                <span><?php echo $result[11]['floor']?>rd floor</span>
+                                <span>3rd floor</span>
                             </div>
                             <?php if($result[11]['state'] == 1){
                                         $statc = 'available';

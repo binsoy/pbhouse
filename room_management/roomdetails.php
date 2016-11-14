@@ -15,6 +15,10 @@
   $water = $row['water'];
   $roomID = $row['roomID'];
   $path = $row['floorplan'];
+
+  $resultc=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '$room'");
+  $boarder=mysql_fetch_assoc($resultc);
+
   
 ?>
 
@@ -97,7 +101,7 @@
       			<div class="container-fluid">
 	      			<div class="container-fluid" id="pop">
 	      				<span>Population: </span>
-	      				<span><?php echo $capacity?></span>
+	      				<span><?php echo $boarder['total'];echo '/';echo $capacity;?></span>
 	      				<a href="../boarder_management/boarder.php?room=<?php echo $room?>">Boarders</a>
 	      			</div>
 	      		</div>
