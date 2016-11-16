@@ -1,0 +1,43 @@
+#body{
+	padding: 0 5% 0 5%;
+    margin-left: 7%;
+}
+
+#bodyy{
+	text-align: center;
+	margin:0;
+	width:100%;
+	float:left;
+}
+
+#text1{
+	color:#400000;
+}
+
+#content{
+	width:75%;
+	border: 1px solid #c4c4c4;
+	padding:16px;
+	margin:15px auto auto auto;
+
+}
+
+#cont{
+	resize:none;
+}
+
+#subject label,
+#details label{
+	float:left;
+}
+
+#details{
+	margin-top: 15px;
+}
+#subject{
+	margin-top:20px;
+}
+
+#buttns{
+	margin-top: 20px
+}

@@ -64,10 +64,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Building Reports</a>
+                                <a href="../report/buildingreport.php">Building Reports</a>
                             </li>
                             <li>
-                                <a href="#">Room Reports</a>
+                                <a href="../report/roomreport.php">Room Reports</a>
                             </li>
                         </ul>
                     </li>
