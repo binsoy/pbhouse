@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include '../_includes/connection.php';
 	
 	$warning = $_SESSION['notification'];

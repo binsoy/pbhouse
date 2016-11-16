@@ -1,4 +1,5 @@
 <?php
+	 session_start();
 	 include_once("lib/config.php");
 	 include_once("../_includes/connection.php");
 
@@ -23,10 +24,12 @@
 			}
 			else {
 				header('Location: ../room_management/roommngmt.php');
+				$_SESSION['memtype'] = 'admin';
 			}
 	 	
 	 }else{
 	 	header('Location: ../room_management/roommngmt.php');
+	 	$_SESSION['memtype'] = 'member';
 	 }
 
 ?>

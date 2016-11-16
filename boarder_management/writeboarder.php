@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$warning = $_SESSION['notification'];
 	$_SESSION['notification'] = NULL;
 ?>

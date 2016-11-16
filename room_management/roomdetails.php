@@ -1,6 +1,7 @@
 <?php
-  include '../_includes/connection.php';
 
+  include '../_includes/connection.php';
+  $acctype = $_SESSION['memtype'];
   $room = $_GET['room'];
 
   $query = "SELECT * FROM room WHERE roomID='$room'";
@@ -19,6 +20,11 @@
   $resultc=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '$room'");
   $boarder=mysql_fetch_assoc($resultc);
 
+  if($acctype == 'admin'){
+    $display="";
+  }else if($acctype == 'member'){
+    $display="none";
+  }
   
 ?>
 
@@ -102,14 +108,14 @@
 	      			<div class="container-fluid" id="pop">
 	      				<span>Population: </span>
 	      				<span><?php echo $boarder['total'];echo '/';echo $capacity;?></span>
-	      				<a href="../boarder_management/boarder.php?room=<?php echo $room?>">Boarders</a>
+	      				<a style="display:<?php echo $display?>" href="../boarder_management/boarder.php?room=<?php echo $room?>">Boarders</a>
 	      			</div>
 	      		</div>
 	      		<div class="container-fluid">
 	      			<div class="container-fluid" id="rate">
 	      				<span>rate:</span>
 	      				<span>php <?php echo $rent?></span>
-	      				<div class="container-fluid" id="edit">
+	      				<div class="container-fluid" id="edit" style="display:<?php echo $display?>">
 	      					<button type="button" class="btn btn-default btn-lg" id="myBtn">Edit Details</button>
 	      				</div>
 	      			</div>

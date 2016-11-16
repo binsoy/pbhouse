@@ -1,3 +1,13 @@
+<?php
+      session_start();
+      $acctype = $_SESSION['memtype'];
+      if($acctype == 'admin'){
+        $display="";
+      }else if($acctype == 'member'){
+        $display="none";
+      }
+?>
+
 <!-- Navigation -->
 <link rel="stylesheet" type="text/css" href="../_includes/style-navbar.css">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -15,7 +25,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right" id="navtext">
-                    <li class="dropdown">
+                    <li style="display:<?php echo $display?>" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Room Management<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -27,7 +37,7 @@
                         </ul>
                     </li>
                     
-                    <li>
+                    <li style="display:<?php echo $display?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boarder<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -38,18 +48,27 @@
                             </li>
                         </ul>
                     </li>
+                   <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
+                        <a href="../boarder_management/userprof.php?id=<?php echo $tenantID; ?>">My Profile</a>
+                    </li>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Billing<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
+                            <li style="display:<?php echo $display?>">
                                 <a href="../billing_management/roomlist.php">Room Bills</a>
                             </li>
-                            <li>
+                            <li style="display:<?php echo $display?>">
                                 <a href="../billing_management/addbill_admin.php">Bill management</a>
+                            </li>
+                             <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
+                                <a href="#">View Bills</a>
+                            </li>
+                            <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
+                                <a href="#">View Transaction logs</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li style="display:<?php echo $display?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Building Management<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -61,13 +80,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+                        <a href="#" style="display:<?php if($acctype == 'admin'){echo 'none';}?>" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="../report/buildingreport.php">Building Reports</a>
+                                <a href="../report/buildingreport.php">Write Building Issue</a>
                             </li>
                             <li>
-                                <a href="../report/roomreport.php">Room Reports</a>
+                                <a href="../report/roomreport.php">Write room issue</a>
                             </li>
                         </ul>
                     </li>

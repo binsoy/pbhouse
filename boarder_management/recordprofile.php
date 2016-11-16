@@ -1,6 +1,4 @@
 <?php
-	session_start();
-
 	include '../_includes/connection.php';
 	
 	$tenantID = $_GET['id'];
