@@ -1,11 +1,15 @@
 <?php
       session_start();
+
+      $name = $_SESSION['uname'];
+
       $acctype = $_SESSION['memtype'];
       if($acctype == 'admin'){
         $display="";
       }else if($acctype == 'member'){
         $display="none";
       }
+
 ?>
 
 <!-- Navigation -->
@@ -48,9 +52,6 @@
                             </li>
                         </ul>
                     </li>
-                   <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
-                        <a href="../boarder_management/userprof.php?id=<?php echo $tenantID; ?>">My Profile</a>
-                    </li>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Billing<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -90,7 +91,18 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
+                        <a href="../boarder_management/userprof.php?id=<?php echo $tenantID; ?>" class="dropdown-toggle" data-toggle="dropdown">HI! <?php echo $name?><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../boarder_management/userprof.php?">My profile</a>
+                            </li>
+                            <li>
+                                <a href="../index.php">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li style="display:<?php echo $display?>">
                         <a href="../index.php">Logout</a>
                     </li>
                 </ul>

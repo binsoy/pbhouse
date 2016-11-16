@@ -1,5 +1,6 @@
 <?php
 	session_start();
+    $_SESSION['uname'] = NULL;
 	$_SESSION['notification'] = NULL;
 ?>
 <html lang="en">

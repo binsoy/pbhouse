@@ -129,9 +129,12 @@
                                     }else if($result[0]['state'] == 3){
                                         $stat1 = 'Full';
                                         $color1 = '#f93e3e';
-                                    }else{
+                                    }else if($result[0]['state'] == 4){
                                         $stat1 = 'Under Maintenance';
                                         $color1 = '#fd9985';
+                                    }else{
+                                        $stat1 = 'Unregistered';
+                                        $color1 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
@@ -154,9 +157,12 @@
                                     }else if($result[4]['state'] == 3){
                                         $stat2 = 'Full';
                                         $color2 = '#f93e3e';
-                                    }else{
+                                    }else if($result[4]['state'] == 4){
                                         $stat2 = 'Under Maintenance';
                                         $color2 = '#fd9985';
+                                    }else{
+                                        $stat2 = 'Unregistered';
+                                        $color2 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color2?>">
@@ -179,9 +185,12 @@
                                     }else if($result[8]['state'] == 3){
                                         $stat3 = 'Full';
                                         $color3 = '#f93e3e';
-                                    }else{
+                                    }else if($result[8]['state'] == 4){
                                         $stat3 = 'Under Maintenance';
                                         $color3 = '#fd9985';
+                                    }else{
+                                        $stat3 = 'Unregistered';
+                                        $color3 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid"  id="txt" style="color:<?php echo $color3?>">
@@ -206,9 +215,12 @@
                                     }else if($result[1]['state'] == 3){
                                         $stat4 = 'Full';
                                         $color4 = '#f93e3e';
-                                    }else{
+                                    }else if($result[1]['state'] == 4){
                                         $stat4 = 'Under Maintenance';
                                         $color4 = '#fd9985';
+                                    }else{
+                                        $stat4 = 'Unregistered';
+                                        $color4 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid"  id="txt" style="color:<?php echo $color4?>">
@@ -231,9 +243,12 @@
                                     }else if($result[5]['state'] == 3){
                                         $stat5 = 'Full';
                                         $color5 = '#f93e3e';
-                                    }else{
+                                    }else if($result[5]['state'] == 4){
                                         $stat5 = 'Under Maintenance';
                                         $color5 = '#fd9985';
+                                    }else{
+                                        $stat5 = 'Unregistered';
+                                        $color5 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color5?>">
@@ -256,9 +271,12 @@
                                     }else if($result[9]['state'] == 3){
                                         $stat6 = 'Full';
                                         $color6 = '#f93e3e';
-                                    }else{
+                                    }else if($result[9]['state'] == 4){
                                         $stat6 = 'Under Maintenance';
                                         $color6 = '#fd9985';
+                                    }else{
+                                        $stat6 = 'Unregistered';
+                                        $color6 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color6?>">
@@ -283,9 +301,12 @@
                                     }else if($result[2]['state'] == 3){
                                         $stat7 = 'Full';
                                         $color7 = '#f93e3e';
-                                    }else{
-                                        $stat7 = 'Under Maintenance';
+                                    }else if($result[2]['state'] == 4){
+                                        $stat7= 'Under Maintenance';
                                         $color7 = '#fd9985';
+                                    }else{
+                                        $stat7 = 'Unregistered';
+                                        $color7 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color7?>">
@@ -308,9 +329,12 @@
                                     }else if($result[6]['state'] == 3){
                                         $stat8 = 'Full';
                                         $color8 = '#f93e3e';
-                                    }else{
+                                    }else if($result[6]['state'] == 4){
                                         $stat8 = 'Under Maintenance';
                                         $color8 = '#fd9985';
+                                    }else{
+                                        $stat8 = 'Unregistered';
+                                        $color8 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color8?>">
@@ -333,9 +357,12 @@
                                     }else if($result[10]['state'] == 3){
                                         $stat9 = 'Full';
                                         $color9 = '#f93e3e';
-                                    }else{
+                                    }else if($result[10]['state'] == 4){
                                         $stat9 = 'Under Maintenance';
                                         $color9 = '#fd9985';
+                                    }else{
+                                        $stat9 = 'Unregistered';
+                                        $color9 = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color9?>">
@@ -360,9 +387,12 @@
                                     }else if($result[3]['state'] == 3){
                                         $stata = 'Full';
                                         $colora = '#f93e3e';
-                                    }else{
+                                    }else if($result[3]['state'] == 4){
                                         $stata = 'Under Maintenance';
                                         $colora = '#fd9985';
+                                    }else{
+                                        $stata = 'Unregistered';
+                                        $colora = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $colora?>">
@@ -385,9 +415,12 @@
                                     }else if($result[7]['state'] == 3){
                                         $statb = 'Full';
                                         $colorb = '#f93e3e';
-                                    }else{
+                                    }else if($result[7]['state'] == 4){
                                         $statb = 'Under Maintenance';
                                         $colorb = '#fd9985';
+                                    }else{
+                                        $statb = 'Unregistered';
+                                        $colorb = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $colorb?>">
@@ -410,9 +443,12 @@
                                     }else if($result[11]['state'] == 3){
                                         $statc = 'Full';
                                         $colorc = '#f93e3e';
-                                    }else{
+                                    }else if($result[11]['state'] == 4){
                                         $statc = 'Under Maintenance';
                                         $colorc = '#fd9985';
+                                    }else{
+                                        $statc = 'Unregistered';
+                                        $colorc = '#545556';
                                     }
                             ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $colorc?>">

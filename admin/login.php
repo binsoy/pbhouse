@@ -11,6 +11,7 @@
 	$result = mysql_query($query) or die(mysql_error());
 
 	$row = mysql_fetch_array($result);
+
 	 
 	if(empty($row)){
 			
@@ -25,11 +26,14 @@
 			else {
 				header('Location: ../room_management/roommngmt.php');
 				$_SESSION['memtype'] = 'admin';
+				$_SESSION['adminID'] = $rowA['tenantID'];
 			}
 	 	
 	 }else{
 	 	header('Location: ../room_management/roommngmt.php');
 	 	$_SESSION['memtype'] = 'member';
+	 	$_SESSION['uname'] = $uname;
+	 	$_SESSION['clog'] = $row['tenantID'];
 	 }
 
 ?>

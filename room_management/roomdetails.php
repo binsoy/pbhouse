@@ -1,5 +1,5 @@
 <?php
-
+  error_reporting(0);
   include '../_includes/connection.php';
   $acctype = $_SESSION['memtype'];
   $room = $_GET['room'];

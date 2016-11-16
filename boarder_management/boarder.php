@@ -1,7 +1,6 @@
 <?php
 	$warning = $_SESSION['notification'];
 	$_SESSION['notification'] = NULL;
-
 	include '../_includes/connection.php';
 ?>
 <html lang="en">
