@@ -1,4 +1,5 @@
 <?php
+	error_reporting(0);
 	include '../_includes/connection.php';
 	
 	$warning = $_SESSION['notification'];
@@ -22,6 +23,9 @@
 	$displayPic = $row['displayPic'];
 	$roomID = $row['roomID'];
 	
+
+	$query1 = "SELECT * FROM room";
+	$result2 = mysql_query($query1) or die(mysql_error());
 ?>
 <html lang="en">
 
@@ -40,7 +44,7 @@
 
     <!-- Custom CSS -->
     <link href="../_css/modern-business.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="../_css/default.css">
     <!-- Custom Fonts -->
     <link href="../_font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -63,13 +67,12 @@
 
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
-            <div class="col-lg-10">
-                <h1 class="page-header">Register</h1>
+            <div class="col-lg-12">
+                <h1 class="page-header">Edit Profile</h1>
 				
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li><a href="boarder.php">Boarder Management</a></li>
-                    <li><a href="userprof.php?id=<?php echo $tenantID; ?>"><?php echo $fname . " " . $lname; ?></a></li>
 					<li>Edit Profile</li>
                 </ol>
             </div>
@@ -80,50 +83,50 @@
 
         <!-- M A I N   C O N T E N T -->
         <div class="row">
+        	<div class="col-lg-2"></div>
+        	<div class="col-lg-8">
             <div class="form-group" style="margin-left: 20px; margin-right: 20px;">
 			<form action="recordprofile.php?id=<?php echo $tenantID; ?>" method="post" enctype="multipart/form-data">
 						<label for="fname">First Name</label>
-						<input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>" required /> <br />
+						<input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>"  /> <br />
 						<label for="lname">Last Name</label>
-						<input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>" required /> <br />
+						<input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>"  /> <br />
 						<label for="gender">Sex</label>
-						<select class="form-control" id="gender" name="gender" required>
+						<select class="form-control" id="gender" name="gender" >
 						  <option disabled selected value> -- select an option -- </option>
 						  <option value="1">Male</option>
 						  <option value="2">Female</option>
 						</select> <br />
 						<label for="bdate">Birth Date</label>
-						<input type="text" class="form-control" id="bdate" name="bdate" value="<?php echo $bdate; ?>" required /> <br />
+						<input class="form-control"  name="bdate" id="datepicker-example1" type="text" value="<?php echo $bdate; ?>">
+						 <br />
 						<label for="phoneNo">Mobile Number</label>
-						<input type="text" class="form-control" id="phoneNo" name="phoneNo" pattern="[0-9]{11,}" title="Mobile number must be 11 digits long" maxlength="11" value="<?php echo $contactNo; ?>" required /> <br />
+						<input type="text" class="form-control" id="phoneNo" name="phoneNo" pattern="[0-9]{11,}" title="Mobile number must be 11 digits long" maxlength="11" value="<?php echo $contactNo; ?>" /> <br />
 						<label for="permAddress">Permanent Address</label>
 						<input type="text" class="form-control" id="permAddress" name="permAddress" value="<?php echo $address; ?>" /> <br />
 						<label for="emailAddress">Email Address</label>
-						<input type="email" class="form-control" id="emailAddress" name="emailAddress" value="<?php echo $email; ?>" required/> <br />
+						<input type="email" class="form-control" id="emailAddress" name="emailAddress" value="<?php echo $email; ?>" /> <br />
 						<label for="telNo">Emergency Contact Person</label>
-						<input type="text" class="form-control" id="telNo" name="telNo" value="<?php echo $emergencyContact; ?>" required /> <br />
+						<input type="text" class="form-control" id="telNo" name="telNo" value="<?php echo $emergencyContact; ?>"  /> <br />
 						<label for="username">Username</label>
-						<input type="text" class="form-control" id="username" name="username" value="<?php echo $username; ?>" required /> <br />
+						<input type="text" class="form-control" id="username" name="username" value="<?php echo $username; ?>"  /> <br />
 						<label for="newpasswrd">New Password</label>
 						<input type="password" class="form-control" id="newpasswrd" name="newpasswrd" placeholder="optional" /> <br />
 						<label for="oldpasswrd">Old Password</label>
-						<input type="password" class="form-control" id="oldpasswrd" name="oldpasswrd" required /> <br />
+						<input type="password" required="" class="form-control" id="oldpasswrd" name="oldpasswrd"  /> <br />
 
 						<label for="room">Room Occupied</label>
 						<select class="form-control" id="room" name="room" required>
 						  <option disabled selected value> -- select an option -- </option>
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						  <option>6</option>
-						  <option>7</option>
-						  <option>8</option>
-						  <option>9</option>
-						  <option>10</option>
-						  <option>11</option>
-						  <option>12</option>
+						  <?php 
+
+						 while ($res = mysql_fetch_assoc($result2)) {		?>
+
+						 		<option value="<?php echo $res['roomID']; ?>"><?php echo $res['roomID']; ?></option>
+
+						  <?php }
+
+						   ?>
 						</select> <br />
 						
 						<label for="filename">Profile Picture</label>
@@ -131,6 +134,7 @@
 						
 						<center><button type="submit" class="btn btn-primary">Submit</button></center>
 					</form>
+			</div>
 		</div>
         </div>
 		<!-- m a i n   c o n t e n t -->
@@ -164,6 +168,20 @@
 				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
 			}
 	?>
+
+	<script type="text/javascript" src="../_js/zebra_datepicker.js"></script>
+	<script type="text/javascript" src="../_js/core.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+                
+                
+                var $zdp2 = $('#datepicker-example1').data('Zebra_DatePicker');
+                $('#datepicker-example1').Zebra_DatePicker();
+                 
+        });
+
+	</script>
 </body>
 
 </html>

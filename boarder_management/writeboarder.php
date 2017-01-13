@@ -1,6 +1,13 @@
 <?php
+	error_reporting(0);
 	$warning = $_SESSION['notification'];
 	$_SESSION['notification'] = NULL;
+	include '../_includes/connection.php';
+
+	$query = "SELECT * FROM room where state != 3";
+	$result = mysql_query($query) or die(mysql_error());
+
+
 ?>
 <html lang="en">
 
@@ -20,6 +27,7 @@
     <!-- Custom CSS -->
     <link href="../_css/modern-business.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="../_css/default.css">
     <!-- Custom Fonts -->
     <link href="../_font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -59,8 +67,11 @@
 
         <!-- M A I N   C O N T E N T -->
         <div class="row">
+
+        	<div class="col-lg-2"></div>
+        	<div class="col-lg-8">
             <div class="form-group" style="margin-left: 20px; margin-right: 20px;">
-			<form action="recordboarder.php" method="post" enctype="multipart/form-data">
+			<form action="recordboarder.php" method="post" enctype="multipart/form-data" autocomplete="off">
 						<label for="fname">First Name</label>
 						<input type="text" class="form-control" id="fname" name="fname" required /> <br />
 						<label for="lname">Last Name</label>
@@ -72,7 +83,7 @@
 						  <option value="2">Female</option>
 						</select> <br />
 						<label for="bdate">Birth Date</label>
-						<input type="text" class="form-control" id="bdate" name="bdate" required /> <br />
+						<input class="form-control" required name="bdate" id="datepicker-example1" type="text"></input> <br />
 						<label for="phoneNo">Mobile Number</label>
 						<input type="text" class="form-control" id="phoneNo" name="phoneNo" pattern="[0-9]{11,}" title="Mobile number must be 11 digits long" maxlength="11" required /> <br />
 						<label for="permAddress">Permanent Address</label>
@@ -84,23 +95,20 @@
 						<label for="username">Username</label>
 						<input type="text" class="form-control" id="username" name="username" required /> <br />
 						<label for="passwrd">Password</label>
-						<input type="password" class="form-control" id="passwrd" name="passwrd" required /> <br />
+						<input type="password" class="form-control" id="passwrd" name="passwrd" required autocomplete="new-password"/> <br />
 
 						<label for="room">Room Occupied</label>
 						<select class="form-control" id="room" name="room" required>
-						  <option disabled selected value> -- select an option -- </option>
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						  <option>6</option>
-						  <option>7</option>
-						  <option>8</option>
-						  <option>9</option>
-						  <option>10</option>
-						  <option>11</option>
-						  <option>12</option>
+						  <option disabled selected value> -- select an option -- </option>	
+						  <?php 
+
+						 while ($res = mysql_fetch_assoc($result)) {		?>
+
+						 		<option value="<?php echo $res['roomID']; ?>"><?php echo $res['roomID']; ?></option>
+
+						  <?php }
+
+						   ?>
 						</select> <br />
 						
 						<label for="filename">Profile Picture</label>
@@ -108,6 +116,7 @@
 						
 						<center><button type="submit" class="btn btn-primary">Submit</button></center>
 					</form>
+		</div>
 		</div>
         </div>
 		<!-- m a i n   c o n t e n t -->
@@ -141,7 +150,21 @@
 				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
 			}
 	?>
-	
+	<script type="text/javascript" src="../_js/zebra_datepicker.js"></script>
+		<script type="text/javascript" src="../_js/core.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+                
+                
+                var $zdp2 = $('#datepicker-example1').data('Zebra_DatePicker');
+                // assuming the controls you want to attach the plugin to 
+                // have the "datepicker" class set
+                $('#datepicker-example1').Zebra_DatePicker();
+                 
+        });
+
+	</script>
 </body>
 
 </html>

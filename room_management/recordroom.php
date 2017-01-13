@@ -29,7 +29,7 @@
 			$floor = 3;
 		}
 		
-		$queryB = "INSERT INTO room(roomID, floor, state, capacity, floorplan, rent, water, wattCost, wattage) VALUES('', '$floor', '$status', '$pop', '$path', '$rate', '$water', '$wattcost', '$wattage')";
+		$queryB = "INSERT INTO room(roomID, floor, state, capacity, floorplan, rent, water, wattCost, wattage, balance, overPayment, paymentStat) VALUES('', '$floor', '$status', '$pop', '$path', '$rate', '$water', '$wattcost', '$wattage', 0, 0, 0)";
 		$resultB = mysql_query($queryB) or die(mysql_error());
 		header('Location: roommngmt.php');	
 	}

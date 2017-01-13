@@ -37,6 +37,15 @@
 
           $resultf=mysql_query("SELECT count(*) as total from room WHERE state = 4");
           $underm=mysql_fetch_assoc($resultf);
+
+          $queryz = "SELECT count(*) FROM report where category = 0 and state=1";
+          $resultz = mysql_query($queryz) or die(mysql_error());
+         
+
+          $ctr = 0; 
+          while ($ress = mysql_fetch_assoc($resultz)) {
+              $ctr++;
+          }
     ?>
 <html lang="en">
 
@@ -94,7 +103,7 @@
                 <!-- /.row -->
                 <div class="container-fluid" id="statcontain">
                     <div id ="stattxt">
-                        <span>Available Rooms: <?php echo $available['total'];?></span>
+                        <span>Empty Rooms: <?php echo $available['total'];?></span>
                     </div>
                     <div id="stattxt">
                         <span>Occupied Rooms: <?php echo $occupied['total'];?></span>
@@ -106,7 +115,7 @@
                         <span>Fully Occupied Rooms: <?php echo $full['total'];?></span>
                     </div>
                     <div id="stattxt">
-                        <span>Under Maintenance Rooms: <?php echo $underm['total'];?></span>
+                        <span>Under Maintenance Rooms: <?php echo $ctr; ?></span>
                     </div>
                 </div>
 
@@ -141,7 +150,8 @@
                                 <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="roomdetails.php?room=5"><div class="container-fluid" id="t1b">
+                        <a href="roomdetails.php?room=5">
+                            <div class="container-fluid" id="t1b">
                             <div class="container-fluid">
                                 <span>Room No.3</span>
                             </div>

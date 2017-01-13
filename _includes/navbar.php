@@ -1,6 +1,11 @@
 <?php
       session_start();
 
+              if (empty($_SESSION['logged_in']))
+        {
+            header('Location: /index.php');
+        }
+
       $name = $_SESSION['uname'];
 
       $acctype = $_SESSION['memtype'];
@@ -58,14 +63,11 @@
                             <li style="display:<?php echo $display?>">
                                 <a href="../billing_management/roomlist.php">Room Bills</a>
                             </li>
-                            <li style="display:<?php echo $display?>">
-                                <a href="../billing_management/addbill_admin.php">Bill management</a>
-                            </li>
                              <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
-                                <a href="#">View Bills</a>
+                                <a href="../billing_management/bill_list.php">View Bills</a>
                             </li>
                             <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
-                                <a href="#">View Transaction logs</a>
+                                <a href="../billing_management/invoice_list.php">View Transaction logs</a>
                             </li>
                         </ul>
                     </li>
@@ -73,10 +75,18 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Building Management<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Building status & issues</a>
+                                <a href="../report_management/view_breport.php">Building status & issues</a>
                             </li>
                             <li>
-                                <a href="#">Room status & issues</a>
+                                <a href="../report_management/roomlist.php">Room status & issues</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li style="display:<?php echo $display?>">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analytics<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../analytics_management/analytics.php">View Analytics</a>
                             </li>
                         </ul>
                     </li>
@@ -84,26 +94,26 @@
                         <a href="#" style="display:<?php if($acctype == 'admin'){echo 'none';}?>" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="../report/buildingreport.php">Write Building Issue</a>
+                                <a href="../report_management/building_report.php">Write Building Issue</a>
                             </li>
                             <li>
-                                <a href="../report/roomreport.php">Write room issue</a>
+                                <a href="../report_management/room_report.php">Write room issue</a>
                             </li>
                         </ul>
                     </li>
                     <li style="display:<?php if($acctype == 'admin'){echo 'none';}?>">
-                        <a href="../boarder_management/userprof.php?id=<?php echo $tenantID; ?>" class="dropdown-toggle" data-toggle="dropdown">HI! <?php echo $name?><b class="caret"></b></a>
+                        <a href="../boarder_management/userprof.php?id=<?php echo $_SESSION['clog']; ?>" class="dropdown-toggle" data-toggle="dropdown">HI! <?php echo $name?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="../boarder_management/userprof.php?">My profile</a>
+                                <a href="../boarder_management/userprof.php?id=<?php echo $_SESSION['clog']; ?>">My profile</a>
                             </li>
                             <li>
-                                <a href="../index.php">Logout</a>
+                                <a href="../admin/logout.php">Logout</a>
                             </li>
                         </ul>
                     </li>
                     <li style="display:<?php echo $display?>">
-                        <a href="../index.php">Logout</a>
+                        <a href="../admin/logout.php">Logout</a>
                     </li>
                 </ul>
             </div>

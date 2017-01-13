@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include '../_includes/connection.php';
 	
 	$fname = $_POST['fname'];
@@ -30,6 +31,9 @@
 		$queryB = "INSERT INTO tenant(tenantID, fname, lname, address, contactNum, username, passwrd, gender, birthDate, emergencyContactNum, emailAddress, dateStart, displayPic, roomID) VALUES('', '$fname', '$lname', '$permAddress', '$phoneNo', '$username', '$passwrd', '$gender', '$bdate', '$emergencyNo', '$emailAddress', now(), '$filename', '$room')";
 		$resultB = mysql_query($queryB) or die(mysql_error());
 		
+		$queryC = "UPDATE room SET state = 2 where roomID = '$room'";
+		$resultC = mysql_query($queryC) or die(mysql_error());
+
 		header('Location: boarder.php');
 	}
 	else {

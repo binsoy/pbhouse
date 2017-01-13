@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
 	include '../_includes/connection.php';
 	include '../_includes/functions.php';
 
@@ -105,8 +106,6 @@
                     <div style="margin-left: 10%">
                         <p>Currently Occupying <span style="font-weight: bold; color: red">Room No. <?php echo $roomID; ?></span> since <span style="font-weight: bold; color: red"><?php echo $dateStart; ?></span></p>
                         <a href="#">View Transaction Logs</a><br>
-                        <a href="#">Report Issue</a><br>
-                        <a href="#">Write feedback about our service</a><br>
                     </div>
                 </div>
             </div>

@@ -25,12 +25,15 @@
 			}
 			else {
 				header('Location: ../room_management/roommngmt.php');
+
+	 			$_SESSION['logged_in'] = TRUE;
 				$_SESSION['memtype'] = 'admin';
-				$_SESSION['adminID'] = $rowA['tenantID'];
+				$_SESSION['adminID'] = $rowA['adminID'];
 			}
 	 	
 	 }else{
-	 	header('Location: ../room_management/roommngmt.php');
+	 	header('Location: ../home.php');
+	 	$_SESSION['logged_in'] = TRUE;
 	 	$_SESSION['memtype'] = 'member';
 	 	$_SESSION['uname'] = $uname;
 	 	$_SESSION['clog'] = $row['tenantID'];

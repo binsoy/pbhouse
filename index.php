@@ -57,7 +57,7 @@
                             <span>Username</span>   
                             <input  type="text" name="uname" required>
                             <span>Password</span>   
-                            <input  type="password" name="pass" required>
+                            <input  type="password" name="pass" required autocomplete="new-password">
                             <input type="submit" value="Submit" required>
                         </div>  
                         </form>

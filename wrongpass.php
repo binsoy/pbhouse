@@ -54,6 +54,7 @@
 
     <!-- Page Content -->
     <div class="container-fluid" id="cont">
+        <hr>
         <div class="container-fluid" id="logincont">
             <div class="container-fluid" id="loginftext">
                 <span>Log into Pastillo's Boarding House</span>
@@ -61,14 +62,14 @@
             <div class="container-fluid" id="loginfields">
             <hr>
                 <div  id="textfields">
-                    <form action="admin/login.php" method="post"> 
+                    <form action="admin/login.php" method="post" > 
                         <div id="username">
                             <span>Username</span>   
-                            <input  type="text" name="uname" required>
+                            <input  type="text" name="uname" required >
                         </div>
                         <div id="passwrd">
                             <span>Password</span>   
-                            <input  type="password" name="pass" required>
+                            <input  type="password" name="pass" required autocomplete="new-password">
                         </div> 
                     </div>
                         <div id="subbtn">
@@ -85,6 +86,7 @@
     <!-- /.container -->
      <!-- Footer -->
         <footer>
+            <hr>
             <div class="row" id="foot">
                 <div class="col-lg-12">
                     <p>Copyright &copy; Esperanza Inc. 2016</p>
@@ -93,19 +95,6 @@
         </footer>
 
     </div>
-    <!-- jQuery -->
-    <script src="_js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="_js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
-
 </body>
 
 </html>

@@ -29,7 +29,7 @@
           <form role="form" form action="updateroom.php?room=<?php echo $_GET['room']?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>Floor Plan and Amenities: </label>
-              <input class="form-control-file form-control" file type="file" name="filename" value=<?php echo $floorplan?> required>
+              <input class="form-control-file form-control" type="file" name="filename" value=<?php echo $floorplan?> required>
             </div>
             <div class="form-group">
               <label>Room Status: </label>

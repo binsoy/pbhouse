@@ -134,7 +134,7 @@
 						<h4><?php echo $contactNum; ?></h4>
 						<p>Email: <span style="color: red"><?php echo $emailAddress; ?></span></p>
 						<p>Currently occupying <span style="color: red">Room <?php echo $roomID; ?></span> since <span style="color: red"><?php echo $dateStart; ?></span></p>
-						<a class="btn btn-primary" href="userprof.php">View Profile</i></a></center>
+						<a class="btn btn-primary" href="userprof.php?id=<?php echo $tenantID; ?>">View Profile</i></a></center>
 					</div>
 				</div>
 				<hr>

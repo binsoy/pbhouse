@@ -4,6 +4,7 @@
 	-ms-transition: all 0.4s;
 	-o-transition: all 0.4s;
 	transition: all 0.4s;
+	
 }
 #cont{
 	padding: 15px;
@@ -96,3 +97,4 @@
 #foot{
 	margin-top: 7%;
 }
+

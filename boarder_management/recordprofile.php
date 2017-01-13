@@ -45,6 +45,9 @@
 			}
 			$queryC = "UPDATE tenant SET fname='$fname', lname='$lname', address='$permAddress', contactNum='$phoneNo', username='$username', passwrd='$oldpasswrd', gender='$gender', birthDate='$bdate', emergencyContactNum='$emergencyNo', emailAddress='$emailAddress', displayPic='$filename', roomID='$room' WHERE tenantID='$tenantID'";
 			$resultC = mysql_query($queryC) or die(mysql_error());
+
+			
+
 			header('Location: userprof.php?id=' . $tenantID);
 			
 		}
@@ -57,5 +60,6 @@
 		header('Location: editprofile.php?id=' . $tenantID);
 	}
 	
+
 
 ?>
