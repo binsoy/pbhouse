@@ -62,18 +62,27 @@
     <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
+
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
+        <?php 
+            if ($_SESSION['memtype'] == 'member') {  ?>
+             
+                <h1>Profile</h1>
+         
+
+         <?php   }else{   ?>
                 <h1 class="page-header">Profile</h1>
-				
+                
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="../home.php">Home</a></li>
                     <li><a href="boarder.php">Boarder Management</a></li>
                     <li>User Profile</li>
                 </ol>
-            </div>
-        </div>
+        <?php    }    ?>
         <!-- /.row -->
+         </div>
+        </div>
 
         <hr>
 
@@ -83,7 +92,7 @@
             <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-4">
-                            <img style="width: 250px; height: 300px; float: left;" class="img-responsive img-hover" src="../_images/<?php echo $displayPic; ?>" alt="<?php echo $displayPic; ?>">
+                            <img style="width: 250px; height: 300px; float: left;" class="img-responsive img-hover" src="uploads/<?php echo $displayPic; ?>" alt="<?php echo $displayPic; ?>">
                             <p style="text-align: center;">Username: <span style="font-weight: bold;"><?php echo $username; ?></span></p>
                             <p style="text-align: center;">Password: ********</p>
                         </div>

@@ -16,14 +16,14 @@
 	$row2 = mysql_fetch_assoc($result3);
 
 	if ($row2['billStat'] == 0) {
-		if ($row2['total'] > $payment) {
-				$bal = $row2['total'] - $payment;
+		if ($row['balance'] > $payment) {
+				$bal = $row['balance'] - $payment;
 				$query1 = "UPDATE room SET balance = '$bal', overPayment = 0 where roomID = '$roomid'";
 				$query2 = "INSERT invoice (invoiceID, amountPaid, datePaid, payee, roomID) VALUES('','$payment',now(), '$tenantid', '$roomid')";
 				$result2 = mysql_query($query2) or die(mysql_error());
-				$billup = mysql_query("UPDATE bill SET billStat = 1 where billID = '$billid'") or die(mysql_error());
-			}else if($row2['total'] < $payment){
-				$over = $payment - $row2['total'];
+				$billup = mysql_query("UPDATE bill SET billStat = 0 where billID = '$billid'") or die(mysql_error());
+			}else if($row['balance'] < $payment){
+				$over = $payment - $row['balance'];
 				$sum = $row['overPayment'] + $over;
 				$query1 = "UPDATE room SET balance = 0, overPayment = '$sum', paymentStat = 1 where roomID = '$roomid'";
 				$query2 = "INSERT invoice (invoiceID, amountPaid, datePaid,payee, roomID) VALUES('','$payment',now(),'$tenantid','$roomid')";

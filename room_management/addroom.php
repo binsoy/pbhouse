@@ -53,7 +53,7 @@
             <form action="recordroom.php" method="post" enctype="multipart/form-data">
                 <div class="container-fluid" id="file">
                       <label>Floor Plan and Amenities: </label>
-                      <input class="form-control-file form-control" file type="file" name="filename" required>
+                      <input class="form-control-file form-control" file type="file" name="filename" required accept="image/*" >
                 </div>
                 <div class = "container-fluid" id="textfield">
                     <label>Room Status: </label>
@@ -67,7 +67,7 @@
                 <div class = "container-fluid" id="textfield2">
                     <label>Room Rate: </label>
                     <span>php</span>
-                    <input class ="form-control" class ="form-control" type="number" name="rate">
+                    <input class ="form-control" class ="form-control" type="number" name="rate" min="0" max="999999">
                 </div>
                 <div class = "container-fluid" id="textfield3">
                     <label>Maximum Person(s) per room: </label>

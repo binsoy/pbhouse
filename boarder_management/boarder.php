@@ -48,7 +48,7 @@
                 <h1 class="page-header">Boarders</h1>
 				
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a>
+                    <li><a href="../home.php">Home</a>
                     </li>
                     <li class="active">Boarder Management</li>
                 </ol>

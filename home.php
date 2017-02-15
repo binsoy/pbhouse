@@ -138,7 +138,7 @@
                         <a href="boarder_management/userprof.php?id=<?php echo $tenantID; ?>" class="dropdown-toggle" data-toggle="dropdown">HI! <?php echo $name?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="boarder_management/userprof.php?">My profile</a>
+                                <a href="boarder_management/userprof.php?id=<?php echo $_SESSION['clog']; ?>">My profile</a>
                             </li>
                             <li>
                                 <a href="index.php">Logout</a>
