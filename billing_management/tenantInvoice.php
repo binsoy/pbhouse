@@ -3,7 +3,7 @@
     error_reporting(0);
     include '../_includes/connection.php';
 
-    $tenantid = $_SESSION['clog'];
+    $tenantid = $_GET['id'];
 
     $query = mysql_query("SELECT * FROM tenant where tenantID = '$tenantid'") or die(mysql_error());
     $row2 = mysql_fetch_assoc($query);
@@ -15,7 +15,7 @@
     $result = mysql_query($roomq) or die(mysql_error());
     $row3 = mysql_fetch_assoc($result);
 
-    $query2 = "SELECT * FROM bill where roomID = '$roomid' ORDER BY billID DESC ";
+    $query2 = "SELECT * FROM invoice where roomID = '$roomid' ORDER BY invoiceID DESC ";
     $result3 = mysql_query($query2) or die(mysql_error());
 
 
@@ -55,8 +55,8 @@
         <div class="row">
             <h1 class="page-header">Billing</h1>
             <ol class="breadcrumb">
-                <li><a href="../home.php">Home</a></li>
-                <li>Bills</li>
+                <li><a href="#">Home</a></li>
+                <li>Invoice</li>
             </ol>
         </div>
         <!-- /.row -->
@@ -74,13 +74,13 @@
         </div>
         <div class="row" >
             <div class="col-lg-12" style="border: solid 1px; border-color: #e5e6e9 #dfe0e4 #d0d1d5; padding: 10px 10px 0 10px; margin-top: 10px">
-                <h4>List of Bills</h4>
+                <h4>List of Invoice</h4>
                 <div class="panel-group" style="height: 420px; overflow: scroll; border: solid 1px; border-color: #e5e6e9 #dfe0e4 #d0d1d5; padding: 5px">
                     <?php  while ($roww = mysql_fetch_assoc($result3)) {    ?> 
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                Bill #:<?php echo $roww['billID']; ?>
-                                <button class="btn btn-success" style="float: right; width: 80px" onclick="opennewtab('view_bill.php?bill=<?php echo $roww['billID']; ?>')">View</button>
+                                Invoice #:<?php echo $roww['invoiceID']; ?>
+                                <button class="btn btn-success" style="float: right; width: 80px" onclick="opennewtab('view_invoice.php?invoice=<?php echo $roww['invoiceID']; ?>')">View</button>
                             </div>
                         </div>
                     <?php } ?>
@@ -136,7 +136,7 @@
   </div>
 </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function opennewtab(url )
             {
               var win=window.open(url, '_blank');

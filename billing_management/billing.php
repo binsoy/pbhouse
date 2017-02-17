@@ -59,8 +59,7 @@
         <div class="row">
             <h1 class="page-header">Billing</h1>
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Billing Management</a></li>
+                <li><a href="../home.php">Home</a></li>
                 <li>Rooms</li>
             </ol>
         </div>
@@ -72,7 +71,9 @@
                                 
                         <?php 
                             while ($row1 = mysql_fetch_assoc($que)) { ?>
-                                <option value="<?php echo $row1['roomID']; ?>"><?php echo $row1['roomID']; ?></option>
+                                <option value="<?php echo $row1['roomID']; ?>" <?php if ($roomid == $row1['roomID']) {
+                                    echo 'selected="selected"';
+                                } ?>><?php echo $row1['roomID']; ?></option>
                         <?php   }
                         ?>
                     </select>
@@ -157,15 +158,15 @@
         <form method="post" action="addbill.php">
             <div class="form-group">
                 <label for="rent">Rent:</label>
-                <input type="number" class="form-control" id="rent" name="rent">
+                <input type="text" disabled="" class="form-control" id="rent" name="rent" value="<?php echo $row3['rent']; ?>">
             </div>
             <div class="form-group">
                 <label for="water">Water:</label>
-                <input type="number" class="form-control" id="water" name="water">
+                <input type="number" class="form-control" id="water" name="water" required="" min="1" max="99999">
             </div>
             <div class="form-group">
                 <label for="elec">Electricity:</label>
-                <input type="number" class="form-control" id="elec" name="elec">
+                <input type="number" class="form-control" id="elec" name="elec" min="1" max="99999" required="">
                 <input type="hidden" name="roomid" value="<?php echo $roomid; ?>">
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
@@ -223,16 +224,17 @@
         <form method="post" action="payment.php">
             <div class="form-group">
                 <label for="payment">Enter payment:</label>
-                <input type="number" class="form-control" id="payment" name="payment">
+                <input type="number" class="form-control" id="payment" name="payment" required="" min="1" max="99999">
                 <input type="hidden" name="roomid" value="<?php echo $roomid; ?>">
                 <input type="hidden" name="billid" value="<?php echo $r['billID']; ?>">
             </div>
             <div class="form-group">
                 <label for=payee>Payee:</label>
-                <select style="text-align-last:center;" name="payee" id="payee" class="form-control">
+                <select style="text-align-last:center;" name="payee" id="payee" class="form-control" required="">
+                    <option value="">---Choose Payee---</option>
                     <?php 
                         while ($row2 = mysql_fetch_assoc($res2)) {  ?>
-                        <option value="<?php echo $row2['tenantID'];?>"><?php echo $row2['fname']." ".$row2['lname']; ?></option>;
+                        <option value="<?php echo $row2['tenantID']; ?>"><?php echo $row2['fname']." ".$row2['lname']; ?></option>
                      <?php   }
                     ?>
                 </select>

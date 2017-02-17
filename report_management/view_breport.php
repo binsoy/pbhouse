@@ -42,9 +42,8 @@
                 <h1 class="page-header">Issues</h1>
                 
                 <ol id="pointer" class="breadcrumb">
-                    <li><a href="Roommngmt.php">Home</a>
+                    <li><a href="../home.php">Home</a>
                     </li>
-                    <li class="active">Report Management</li>
                     <li class="active">Building issues</li>
                 </ol>
             </div>
@@ -52,7 +51,7 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-8" style="height: 450px;">
                 <h2>List of issues:</h2>
                   <hr>
                   <ul class="list-group" style="margin-top: 30px">
@@ -65,11 +64,8 @@
                           <div style="float: right;">
                               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal<?php echo $ctr;?>">Edit</button>
                           </div>
-                          <div style="float: right;">
-                              <form method="post" action="del_breport.php"> 
-                                <input type="hidden" name="reportID" value="<?php echo $res['reportID']; ?>">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                          <div style="float: right;">                                
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#meModal<?php echo $ctr; ?>">Delete</button>
                           </div>
                       </h4>
                         <!-- Modal -->
@@ -85,12 +81,14 @@
                               <label style="float: left;">Content:</label><textarea disabled="" class="form-control" style="resize: none; height: 150px; margin-bottom: 10px"><?php echo $res['content']; ?></textarea>
                               <h3>Status:</h3>
                                 <form method="post" action="edit_breport.php">
-                                    <div class="form-group"">
-                                      <label><input type="radio" name="optradio" value="0">Not yet started</label>
-                                    </div>
-                                    <div div class="form-group">
-                                      <label><input type="radio" name="optradio" value="1">On-going</label>
-                                    </div>
+                                     <label>
+                                          <select name="repStatus" class="form-control">
+                                              <option value="0">Not yet started</option>
+                                              <option value="1">On-going</option>
+                                              <option value="2">Finished</option>
+                                          </select>  
+                                      </label>
+                                      <br>
                                     <input type="hidden" name="reportID" value="<?php echo $res['reportID'] ?>">
                                     <input type="hidden" name="roomID" value="<?php echo $roomID; ?>">
                                 <button type="submit" class="btn btn-default" style="margin-left: 39%; ">Save</button>
@@ -102,11 +100,29 @@
 
                           </div>
                         </div>
+                        <div id="meModal<?php echo $ctr; ?>" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                              <!-- Modal content-->
+                              <div class="modal-content"  style="text-align: center;">
+                                <div class="modal-body">
+                                  <h4 class="modal-title">Are you sure you want to delete this report?</h4>
+                                  <div>
+                                  <form method="post" action="del_breport.php"> 
+                                <input type="hidden" name="reportID" value="<?php echo $res['reportID']; ?>">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+                                </form>
+                               </div>
+                                </div>
+                              </div>
                     </li>
                     <?php $ctr++; } ?>
+
                   </ul>
             </div>    
         </div>
+
         <hr>
 
         <!-- Footer -->

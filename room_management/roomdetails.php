@@ -1,6 +1,8 @@
 <?php
+  session_start();
   error_reporting(0);
   include '../_includes/connection.php';
+  $notif = $_SESSION['notification'];
   $acctype = $_SESSION['memtype'];
   $room = $_GET['room'];
 
@@ -25,6 +27,8 @@
   }else if($acctype == 'member'){
     $display="none";
   }
+
+
   
 ?>
 
@@ -32,33 +36,17 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title href="roommngmt.php">Pastillo's Boarding House</title>
-
-    <!-- Bootstrap Core CSS -->
     <link href="../_css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="../_css/modern-business.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../_font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../_includes/style-roomdetails.css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
-
 <body>
    <?php include_once("../_includes/navbar.php"); ?>
     <!-- Page Content -->
@@ -70,10 +58,8 @@
                 <h1 class="page-header">Room</h1>
 				
                 <ol id="pointer"  class="breadcrumb">
-                    <li><a href="Roommngmt.php">Home</a>
+                    <li><a href="../home.php">Home</a>
                     </li>
-                    <li class="active">Room Management</li>
-                    <li class="active">Rooms</li>
                     <li class="active">Room Details</li>
                 </ol>
             </div>
@@ -93,8 +79,16 @@
                     $color = '#fd9985';
                 }
         ?>
-        
-      <?php if($roomID != NULL){?>
+        <label>Room: 
+          <select style="width: 50px; text-align-last: center; " id="selectbox">
+            <?php $i=1; while ($i<=12) { ?>
+            <option value="<?php echo $i; ?>"<?php if ($room == $i) { echo 'selected="selected"'; } ?>>
+                              <?php echo $i; ?>
+            </option>
+            <?php $i++; } ?>
+          </select>
+        </label>
+        <?php if($roomID != NULL){?>
       	<div class="container-fluid" id="contain">
       		<div class="container-fluid" id="roomtop">
       			<span>Room No. <?php echo $_GET['room'];?></span>
@@ -128,41 +122,9 @@
       				<img src="<?php echo $path;?>" width="1000px" height="280px" class="img-responsive">
       			</div>
       		</div>
-
-      		<div class="container-fluid">
-      			<div class="container-fluid" id="issues">
-      				<span class="issuee">Room Issues: </span>
-      				<div class="container-fluid" id="issuetext">
-      					<ul>
-	      					<li>malfunctioning electricfan</li>
-	      					<li>Defective light</li>
-	      					<li>rusty Doorknob</li>   
-      					</ul>				
-      				</div>
-      			</div>
-      		</div>
-      		<div class="container-fluid" id="rooms">
-      			<div class="container-fluid">
-      				<span>ROOMS</span>
-      			</div>
-      			<div class="container-fluid">
-      				<a href="roomdetails.php?room=1">NO. 1</a>
-      				<a href="roomdetails.php?room=2">NO. 2</a>
-      				<a href="roomdetails.php?room=3">NO. 3</a>
-      				<a href="roomdetails.php?room=4">NO. 4</a>
-      				<a href="roomdetails.php?room=5">NO. 5</a>
-      				<a href="roomdetails.php?room=6">NO. 6</a>
-      				<a href="roomdetails.php?room=7">NO. 7</a>
-      				<a href="roomdetails.php?room=8">NO. 8</a>
-      				<a href="roomdetails.php?room=9">NO. 9</a>
-      				<a href="roomdetails.php?room=10">NO. 10</a>
-      				<a href="roomdetails.php?room=11">NO. 11</a>
-      				<a href="roomdetails.php?room=12">NO. 12</a>
-      			</div>
-      		</div>
       	</div>
       <?php }else{?>
-        <div class="container fluid">
+        <div class="container fluid" style="height: 450px">
               <h3>Room no.<?php echo $room?> is not yet registered</h3>
               <a href="addroom.php?room=3#pointer">Click here to add a room</a>
         </div>
@@ -197,12 +159,39 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../_js/bootstrap.min.js"></script>
+    <script type="text/javascript"></script>
+    <?php 
+      if ($notif != NULL) {
+        echo '<script type=text/javascript>alert("'.$notif.'");</script>';
+        $_SESSION['notification'] = null;
+      }
+     ?>
 
 </body>
 
 <script type="text/javascript">
 window.location.hash = 'pointer'
 
+var uri = window.location.toString();
+if (uri.indexOf("?") > 0 ) {
+    var clean_uri = uri.substring(0, uri.indexOf("?"));
+
+    var hash_pos = location.href.indexOf("#");
+    if (hash_pos > 0) {
+        var hash = location.href.substring(hash_pos, location.href.length);
+        clean_uri += hash;
+    }   
+    window.history.replaceState({}, document.title, clean_uri);
+}
+
+window.onload = function () {
+    var eSelect = document.getElementById('selectbox');
+
+    eSelect.onchange = function () {
+        var strUser = eSelect.options[eSelect.selectedIndex].value;
+        window.location.replace("roomdetails.php?room=" + strUser);
+    }
+}
 
 $(document).ready(function(){
     $("#myBtn").click(function(){

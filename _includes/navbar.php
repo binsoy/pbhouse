@@ -86,7 +86,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analytics<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="../analytics_management/analytics.php">View Analytics</a>
+                                <a href="../analytics_management/analytics.php?year=<?php echo date('Y'); ?>">View Analytics</a>
                             </li>
                         </ul>
                     </li>

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	error_reporting(0);
 	include '../_includes/connection.php';
 	
@@ -71,7 +72,7 @@
                 <h1 class="page-header">Edit Profile</h1>
 				
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="../home.php">Home</a></li>
                     <li><a href="boarder.php">Boarder Management</a></li>
 					<li>Edit Profile</li>
                 </ol>
@@ -88,22 +89,22 @@
             <div class="form-group" style="margin-left: 20px; margin-right: 20px;">
 			<form action="recordprofile.php?id=<?php echo $tenantID; ?>" method="post" enctype="multipart/form-data">
 						<label for="fname">First Name</label>
-						<input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>" required /> <br />
+						<input type="text" class="form-control" maxlength="60" id="fname" name="fname" value="<?php echo $fname; ?>" required /> <br />
 						<label for="lname">Last Name</label>
-						<input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>" required /> <br />
+						<input type="text" class="form-control" id="lname" maxlength="30" name="lname" value="<?php echo $lname; ?>" required /> <br />
 						<label for="bdate">Birth Date</label>
 						<input class="form-control"  name="bdate" id="datepicker-example1" type="text" value="<?php echo $bdate; ?>" required>
 						 <br />
 						<label for="phoneNo">Mobile Number</label>
 						<input type="text" class="form-control" id="phoneNo" name="phoneNo" pattern="[0-9]{11,}" title="Mobile number must be 11 digits long" maxlength="11" value="<?php echo $contactNo; ?>" required /> <br />
 						<label for="permAddress">Permanent Address</label>
-						<input type="text" class="form-control" id="permAddress" name="permAddress" value="<?php echo $address; ?>" required /> <br />
+						<input type="text" class="form-control" id="permAddress" maxlength="128" name="permAddress" value="<?php echo $address; ?>" required /> <br />
 						<label for="emailAddress">Email Address</label>
 						<input type="email" class="form-control" id="emailAddress" name="emailAddress" value="<?php echo $email; ?>" required /> <br />
 						<label for="telNo">Emergency Contact Person</label>
-						<input type="text" class="form-control" id="telNo" name="telNo" value="<?php echo $emergencyContact; ?>" required /> <br />
+						<input type="text" class="form-control" id="telNo" maxlength="20" name="telNo" value="<?php echo $emergencyContact; ?>" required /> <br />
 						<label for="username">Username</label>
-						<input type="text" class="form-control" id="username" name="username" value="<?php echo $username; ?>" required /> <br />
+						<input type="text" class="form-control" id="username" maxlength="20" name="username" value="<?php echo $username; ?>" required /> <br />
 						<label for="newpasswrd">New Password</label>
 						<input type="password" class="form-control" id="newpasswrd" name="newpasswrd" placeholder="optional" /> <br />
 						<label for="oldpasswrd">Old Password</label>
@@ -111,20 +112,19 @@
 
 						<label for="room">Room Occupied</label>
 						<select class="form-control" id="room" name="room" required>
-						  <option disabled selected value> -- select an option -- </option>
 						  <?php 
 
 						 while ($res = mysql_fetch_assoc($result2)) {		?>
 
-						 		<option value="<?php echo $res['roomID']; ?>"><?php echo $res['roomID']; ?></option>
+						 		<option <?php if($res['roomID'] == $roomID){ echo "selected";} ?> value="<?php echo $res['roomID']; ?>"><?php echo $res['roomID']; ?></option>
 
 						  <?php }
 
 						   ?>
 						</select> <br />
 						
-						<label for="filename">Profile Picture (optional)</label>
-						<input type="file" class="file" name="filename" id="filename" accept="image/*" > <br />
+						<label for="filename">Profile Picture</label>
+						<input required="" type="file" class="file" name="filename" id="filename" accept="image/*" > <br />
 						
 						<center><button type="submit" class="btn btn-primary">Submit</button></center>
 					</form>
@@ -156,12 +156,7 @@
     <script src="../_js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../_js/bootstrap.min.js"></script>
-	<?php
-			if($warning != NULL) {
-				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
-			}
-	?>
+    
 
 	<script type="text/javascript" src="../_js/zebra_datepicker.js"></script>
 	<script type="text/javascript" src="../_js/core.js"></script>
@@ -176,6 +171,11 @@
         });
 
 	</script>
+	<?php
+			if($warning != NULL) {
+				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
+			}
+	?>
 </body>
 
 </html>

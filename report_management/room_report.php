@@ -61,16 +61,15 @@
                         <h1 class="page-header">Room Report</h1>
                         
                         <ol id="pointer" class="breadcrumb">
-                            <li><a href="Roommngmt.php">Home</a>
-                            </li>
-                            <li class="active">Reports</li>
+                            <li><a href="../home.php">Home</a>
+                            </li>                            
                             <li class="active">Write Room Report</li>
                         </ol>
                         <div class="row"> 
                             <div class="col-sm-2"></div>
                             <div class="col-sm-8" style="border: solid 1px; border-color: #e5e6e9 #dfe0e4 #d0d1d5;  padding: 5px; box-shadow: 10px 10px 5px #888888;">
                                 <h3>Create Report</h3>
-                                <form action="addreport.php" method="post" enctype="multipart/form-data">
+                                <form action="addreport.php" method="post">
                                   <div class="form-group">
                                     <label for="subject">Subject:</label>
                                     <input type="text" name="subject" class="form-control" id="subject">

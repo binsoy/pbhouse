@@ -1,6 +1,7 @@
 <?php
   include '_includes/connection.php';
   session_start();
+  error_reporting(0);
 
     if (empty($_SESSION['logged_in']))
         {
@@ -119,7 +120,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analytics<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="analytics_management/analytics.php">View Analytics</a>
+                                <a href="analytics_management/analytics.php?year=<?php echo date('Y'); ?>">View Analytics</a>
                             </li>
                         </ul>
                     </li>
@@ -146,7 +147,7 @@
                         </ul>
                     </li>
                     <li style="display:<?php echo $display?>">
-                        <a href="_/admin/logout.php">Logout</a>
+                        <a href="/admin/logout.php">Logout</a>
                     </li>
                 </ul>
             </div>

@@ -29,7 +29,7 @@
           <form role="form" form action="updateroom.php?room=<?php echo $_GET['room']?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>Floor Plan and Amenities: </label>
-              <input class="form-control-file form-control" type="file" name="filename" value=<?php echo $floorplan?> required>
+              <input accept="image/*" class="form-control-file form-control" type="file" name="filename" value=<?php echo $floorplan?> required>
             </div>
             <div class="form-group">
               <label>Room Status: </label>
@@ -37,32 +37,16 @@
                     <option value ='1'>Available</option>
                     <option value ='2'>Occupied</option>
                     <option value ='3'>Full</option>
-                    <option value ='4'>Under Maintenance</option>
                   </select>     
             </div>
             <div class="form-group">
               <label>Room rate: </label>
               <span>php</span>
-              <input class="form-control" type="number" name="rate" value=<?php echo $rent?> required>
+              <input class="form-control" type="number" name="rate" max="99999" min="1" value="<?php echo $rent?>" required>
             </div>
             <div class="form-group">
               <label>Maximum Person(s) per room: </label>
-              <input class="form-control" type="number" name="population" value=<?php echo $capacity?> required>
-            </div>
-            <div class="form-group">
-              <label>Water fee: </label>
-              <span>php</span>
-              <input class="form-control" type="number" name="water" value=<?php echo $water?> required>
-            </div>
-            <div class="form-group">
-              <label>Wattcost: </label>
-              <span>php</span>
-              <input type="number" name="wattcost" class="form-control" value=<?php echo $cost?> required>
-            </div>
-            <div class="form-group">
-              <label>wattage: </label>
-              <span>php</span>
-              <input type="number" name="wattage" class="form-control" value=<?php echo $wattage?> required>
+              <input class="form-control" type="number" max="12" min="1" name="population" value=<?php echo $capacity?> required>
             </div>
             <div id="buttonsc" class="container-fluid">
             <input type="hidden" name="floor" value =<?php echo $floor?>>

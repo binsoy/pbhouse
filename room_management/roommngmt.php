@@ -1,9 +1,10 @@
 <!DOCTYPE html>
     <?php 
+        session_start();
         error_reporting(0);
         include '../_includes/connection.php';
         include '../_includes/navbar.php';
-
+        $notif = $_SESSION['notification'];
           /*$query = "SELECT * FROM room WHERE roomID='$room'";
           $result = mysql_query($query) or die(mysql_error());
           $row = mysql_fetch_array($result);*/
@@ -38,14 +39,6 @@
           $resultf=mysql_query("SELECT count(*) as total from room WHERE state = 4");
           $underm=mysql_fetch_assoc($resultf);
 
-          $queryz = "SELECT count(*) FROM report where category = 0 and state=1";
-          $resultz = mysql_query($queryz) or die(mysql_error());
-         
-
-          $ctr = 0; 
-          while ($ress = mysql_fetch_assoc($resultz)) {
-              $ctr++;
-          }
     ?>
 <html lang="en">
 
@@ -93,9 +86,8 @@
                         <h1 class="page-header">Rooms</h1>
                         
                         <ol id="pointer" class="breadcrumb">
-                            <li><a href="Roommngmt.php">Home</a>
+                            <li><a href="../home.php">Home</a>
                             </li>
-                            <li class="active">Room Management</li>
                             <li class="active">Rooms</li>
                         </ol>
                     </div>
@@ -114,16 +106,13 @@
                     <div id="stattxt">
                         <span>Fully Occupied Rooms: <?php echo $full['total'];?></span>
                     </div>
-                    <div id="stattxt">
-                        <span>Under Maintenance Rooms: <?php echo $ctr; ?></span>
-                    </div>
                 </div>
 
                 
                 <div class="container" id="tablecont">
                     <div class="container-fluid col-lg-3" id="t1">
                         <a href="roomdetails.php?room=1"><div class="container-fluid" id="t1a">
-                            <div class="container-fluid" onclick="roomdetails.php">
+                            <div class="container-fluid">
                                 <span>Room No.1</span>
                             </div>
                             <div class="container-fluid">
@@ -138,9 +127,6 @@
                                     }else if($result[0]['state'] == 3){
                                         $stat1 = 'Full';
                                         $color1 = '#f93e3e';
-                                    }else if($result[0]['state'] == 4){
-                                        $stat1 = 'Under Maintenance';
-                                        $color1 = '#fd9985';
                                     }else{
                                         $stat1 = 'Unregistered';
                                         $color1 = '#545556';
@@ -153,7 +139,7 @@
                         <a href="roomdetails.php?room=5">
                             <div class="container-fluid" id="t1b">
                             <div class="container-fluid">
-                                <span>Room No.3</span>
+                                <span>Room No.5</span>
                             </div>
                             <div class="container-fluid">
                                 <span>2nd floor</span>
@@ -167,9 +153,6 @@
                                     }else if($result[4]['state'] == 3){
                                         $stat2 = 'Full';
                                         $color2 = '#f93e3e';
-                                    }else if($result[4]['state'] == 4){
-                                        $stat2 = 'Under Maintenance';
-                                        $color2 = '#fd9985';
                                     }else{
                                         $stat2 = 'Unregistered';
                                         $color2 = '#545556';
@@ -195,9 +178,6 @@
                                     }else if($result[8]['state'] == 3){
                                         $stat3 = 'Full';
                                         $color3 = '#f93e3e';
-                                    }else if($result[8]['state'] == 4){
-                                        $stat3 = 'Under Maintenance';
-                                        $color3 = '#fd9985';
                                     }else{
                                         $stat3 = 'Unregistered';
                                         $color3 = '#545556';
@@ -225,9 +205,6 @@
                                     }else if($result[1]['state'] == 3){
                                         $stat4 = 'Full';
                                         $color4 = '#f93e3e';
-                                    }else if($result[1]['state'] == 4){
-                                        $stat4 = 'Under Maintenance';
-                                        $color4 = '#fd9985';
                                     }else{
                                         $stat4 = 'Unregistered';
                                         $color4 = '#545556';
@@ -253,9 +230,6 @@
                                     }else if($result[5]['state'] == 3){
                                         $stat5 = 'Full';
                                         $color5 = '#f93e3e';
-                                    }else if($result[5]['state'] == 4){
-                                        $stat5 = 'Under Maintenance';
-                                        $color5 = '#fd9985';
                                     }else{
                                         $stat5 = 'Unregistered';
                                         $color5 = '#545556';
@@ -281,9 +255,6 @@
                                     }else if($result[9]['state'] == 3){
                                         $stat6 = 'Full';
                                         $color6 = '#f93e3e';
-                                    }else if($result[9]['state'] == 4){
-                                        $stat6 = 'Under Maintenance';
-                                        $color6 = '#fd9985';
                                     }else{
                                         $stat6 = 'Unregistered';
                                         $color6 = '#545556';
@@ -311,9 +282,6 @@
                                     }else if($result[2]['state'] == 3){
                                         $stat7 = 'Full';
                                         $color7 = '#f93e3e';
-                                    }else if($result[2]['state'] == 4){
-                                        $stat7= 'Under Maintenance';
-                                        $color7 = '#fd9985';
                                     }else{
                                         $stat7 = 'Unregistered';
                                         $color7 = '#545556';
@@ -339,9 +307,6 @@
                                     }else if($result[6]['state'] == 3){
                                         $stat8 = 'Full';
                                         $color8 = '#f93e3e';
-                                    }else if($result[6]['state'] == 4){
-                                        $stat8 = 'Under Maintenance';
-                                        $color8 = '#fd9985';
                                     }else{
                                         $stat8 = 'Unregistered';
                                         $color8 = '#545556';
@@ -367,9 +332,6 @@
                                     }else if($result[10]['state'] == 3){
                                         $stat9 = 'Full';
                                         $color9 = '#f93e3e';
-                                    }else if($result[10]['state'] == 4){
-                                        $stat9 = 'Under Maintenance';
-                                        $color9 = '#fd9985';
                                     }else{
                                         $stat9 = 'Unregistered';
                                         $color9 = '#545556';
@@ -397,9 +359,6 @@
                                     }else if($result[3]['state'] == 3){
                                         $stata = 'Full';
                                         $colora = '#f93e3e';
-                                    }else if($result[3]['state'] == 4){
-                                        $stata = 'Under Maintenance';
-                                        $colora = '#fd9985';
                                     }else{
                                         $stata = 'Unregistered';
                                         $colora = '#545556';
@@ -425,9 +384,6 @@
                                     }else if($result[7]['state'] == 3){
                                         $statb = 'Full';
                                         $colorb = '#f93e3e';
-                                    }else if($result[7]['state'] == 4){
-                                        $statb = 'Under Maintenance';
-                                        $colorb = '#fd9985';
                                     }else{
                                         $statb = 'Unregistered';
                                         $colorb = '#545556';
@@ -453,9 +409,6 @@
                                     }else if($result[11]['state'] == 3){
                                         $statc = 'Full';
                                         $colorc = '#f93e3e';
-                                    }else if($result[11]['state'] == 4){
-                                        $statc = 'Under Maintenance';
-                                        $colorc = '#fd9985';
                                     }else{
                                         $statc = 'Unregistered';
                                         $colorc = '#545556';
@@ -499,6 +452,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../_js/bootstrap.min.js"></script>
+    <?php 
+      if ($notif != NULL) {
+        echo '<script type=text/javascript>alert("'.$notif.'");</script>';
+        $_SESSION['notification'] = null;
+      }
+     ?>
 
 </body>
 

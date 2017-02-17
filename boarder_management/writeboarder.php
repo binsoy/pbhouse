@@ -55,7 +55,7 @@
                 <h1 class="page-header">Register</h1>
 				
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="../home.php">Home</a></li>
                     <li><a href="boarder.php">Boarder Management</a></li>
                     <li>Add Boarder</li>
                 </ol>
@@ -112,7 +112,7 @@
 						</select> <br />
 						
 						<label for="filename">Profile Picture</label>
-						<input type="file" class="file" name="filename" required id="filename"> <br />
+						<input type="file" class="file" name="filename" required id="filename" accept="image/*"> <br />
 						
 						<center><button type="submit" class="btn btn-primary">Submit</button></center>
 					</form>

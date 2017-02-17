@@ -2,10 +2,11 @@
     session_start();
     error_reporting(0);
     include '../_includes/connection.php';
-        $query = mysql_query("SELECT * FROM analytics where id = 1") or die(mysql_error());
+        $year = $_GET['year'];
+        $query = mysql_query("SELECT * FROM analytics where curYear = '$year'") or die(mysql_error());
         $row = mysql_fetch_array($query);
+        $query2 = mysql_query("SELECT * FROM analytics") or die(mysql_error());
 ?>
-
 <!DOCTYPE html>
     <?php include '../_includes/navbar.php';?>
 <html lang="en">
@@ -40,21 +41,24 @@
     <div class="container">
     <!-- Page Heading/Breadcrumbs -->
         <div class="row">
-            <h1 class="page-header">Billing</h1>
+            <h1 class="page-header">Statistics</h1>
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Billing Management</a></li>
-                <li>Rooms</li>
+                <li><a href="../home.php">Home</a></li>
+                <li>Statistics</li>
             </ol>
         </div>
         <!-- /.row -->
         <div class="row">
+                <label style="margin-top: 15px">Year:
+                    <select style="width: 100px; text-align-last: center;" id="selectbox">
+                        <?php while ($row2 = mysql_fetch_assoc($query2)) {  ?>
+                                <option value="<?php echo $row2['curYear']; ?>" <?php if($year == $row2['curYear']) {
+                                echo 'selected="selected"';} ?>><?php echo $row2['curYear']; ?></option>
+                        <?php } ?>
+                    </select>
+                </label>
                 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto "></div>
         </div>
-        
-
-        
-    
         <div class="container">
             <footer>
                 <hr>
@@ -96,7 +100,7 @@
     $(function () {
     Highcharts.chart('container', {
         title: {
-            text: 'Monthly Income',
+            text: '<?php echo $row['curYear']; ?> Monthly Income',
             x: -20 //center
         },
         subtitle: {
@@ -127,11 +131,26 @@
             borderWidth: 0
         },
         series: [{
-            name: 'Year: 2017',
+            name: 'Year: <?php echo $year; ?>',
             data: [a,b,c,d,e,f,g,h,i,j,k,l]
         }]
     });
 });
+
+
+    function opennewtab(url )
+{
+  var win=window.open(url, '_blank');
+}
+
+ window.onload = function () {
+    var eSelect = document.getElementById('selectbox');
+
+    eSelect.onchange = function () {
+        var strUser = eSelect.options[eSelect.selectedIndex].value;
+        window.location.replace("analytics.php?year=" + strUser);
+    }
+}
 </script>
 </body>
     

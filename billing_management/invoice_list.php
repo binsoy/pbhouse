@@ -55,9 +55,8 @@
         <div class="row">
             <h1 class="page-header">Billing</h1>
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Billing Management</a></li>
-                <li>Rooms</li>
+                <li><a href="../home.php">Home</a></li>
+                <li>Invoice</li>
             </ol>
         </div>
         <!-- /.row -->

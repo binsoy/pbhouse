@@ -1,8 +1,13 @@
 <?php
-	error_reporting(0);
+    session_start();
+    error_reporting(0);
     $warning = $_SESSION['notification'];
-	$_SESSION['notification'] = NULL;
-	include '../_includes/connection.php';
+    include '../_includes/connection.php';
+
+    $page = $_GET['page'];
+
+
+
 ?>
 <html lang="en">
 
@@ -25,13 +30,6 @@
     <!-- Custom Fonts -->
     <link href="../_font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -46,7 +44,7 @@
         <div class="row">
             <div class="col-lg-10">
                 <h1 class="page-header">Boarders</h1>
-				
+                
                 <ol class="breadcrumb">
                     <li><a href="../home.php">Home</a>
                     </li>
@@ -55,88 +53,67 @@
             </div>
         </div>
         <!-- /.row -->
-		<?php
-			$queryA = "SELECT * FROM tenant WHERE roomID=1";
-			$resultA = mysql_query($queryA) or die(mysql_error());
-			while($rowA = mysql_fetch_array($resultA)) {
-				$tenantID = $rowA['tenantID'];
-				$fname = $rowA['fname'];
-				$lname = $rowA['lname'];
-				$contactNum = $rowA['contactNum'];
-				$roomID = $rowA['roomID'];
-				$dateStart = $rowA['dateStart'];
-				$displayPic = $rowA['displayPic'];
-				$emailAddress = $rowA['emailAddress'];
-				if(empty($emailAddress)) {
-					$emailAddress = "N/A";
-				}
-			?>
-				
-				<div class="row">
-					<div class="col-md-3">
-						<a href="uploads/<?php echo $displayPic; ?>">
-							<center><img style="width: 145px; height: 145px" class="img-responsive img-hover" src="uploads/<?php echo $displayPic; ?>" alt=""></center>
-						</a>
-							<center><h4 style="color: red"><?php echo $fname . " " . $lname; ?></h4></center>
-						
-					</div>
-					<div class="col-md-8">
-						<center>
-						<h4><?php echo $contactNum; ?></h4>
-						<p>Email: <span style="color: red"><?php echo $emailAddress; ?></span></p>
-						<p>Currently occupying <span style="color: red">Room <?php echo $roomID; ?></span> since <span style="color: red"><?php echo $dateStart; ?></span></p>
-						<a class="btn btn-primary" href="userprof.php?id=<?php echo $tenantID; ?>">View Profile</i></a></center>
-					</div>
-				</div>
-				<hr>
-				<!-- /.row -->
-	
-		<?php
-			}
-		?>
-		
+        <?php
+            if ($page == "" || $page == '1') {
+                $page1 = 0;
+            }else{
+                $page1 = ($page * 5)-5;
+            }
+
+
+            $queryA = "SELECT * FROM tenant LIMIT  $page1,5";
+            $resultA = mysql_query($queryA) or die(mysql_error());
+            while($rowA = mysql_fetch_array($resultA)) {
+                $tenantID = $rowA['tenantID'];
+                $fname = $rowA['fname'];
+                $lname = $rowA['lname'];
+                $contactNum = $rowA['contactNum'];
+                $roomID = $rowA['roomID'];
+                $dateStart = $rowA['dateStart'];
+                $displayPic = $rowA['displayPic'];
+                $emailAddress = $rowA['emailAddress'];
+                if(empty($emailAddress)) {
+                    $emailAddress = "N/A";
+                }
+            ?>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="uploads/<?php echo $displayPic; ?>">
+                            <center><img style="width: 145px; height: 145px" class="img-responsive img-hover" src="uploads/<?php echo $displayPic; ?>" alt=""></center>
+                        </a>
+                            <center><h4 style="color: red"><?php echo $fname . " " . $lname; ?></h4></center>
+                        
+                    </div>
+                    <div class="col-md-8">
+                        <center>
+                        <h4><?php echo $contactNum; ?></h4>
+                        <p>Email: <span style="color: red"><?php echo $emailAddress; ?></span></p>
+                        <p>Currently occupying <span style="color: red">Room <?php echo $roomID; ?></span> since <span style="color: red"><?php echo $dateStart; ?></span></p>
+                        <a class="btn btn-primary" href="userprof.php?id=<?php echo $tenantID; ?>">View Profile</i></a></center>
+                    </div>
+                </div>
+                <hr>
+                <!-- /.row -->
+    
+        <?php
+            }
+        ?>
+        
         <!-- Pagination -->
+        <?php 
+            $result =  mysql_query("SELECT * FROM tenant") or die(mysql_error());
+            $cou = mysql_num_rows($result);
+
+            $a = $cou / 5;
+            $a = ceil($a);
+         ?>
         <div class="row text-center">
             <div class="col-lg-12">
                 <ul class="pagination">
-                    
-                    <li class="active">
-                        <a href="boarder.php">1</a>
-                    </li>
-                    <li>
-                        <a href="boarder_page.php?room=2">2</a>
-                    </li>
-                    <li>
-                        <a href="boarder_page.php?room=3">3</a>
-                    </li>
-                    <li>
-                        <a href="boarder_page.php?room=4">4</a>
-                    </li>
-                    <li>
-                        <a href="boarder_page.php?room=5">5</a>
-                    </li>
-					<li>
-                        <a href="boarder_page.php?room=6">6</a>
-                    </li>
-					<li>
-                        <a href="boarder_page.php?room=7">7</a>
-                    </li>
-					<li>
-                        <a href="boarder_page.php?room=8">8</a>
-                    </li>
-					<li>
-                        <a href="boarder_page.php?room=9">9</a>
-                    </li>
-					<li>
-                        <a href="boarder_page.php?room=10">10</a>
-                    </li>
-					<li>
-                        <a href="boarder_page.php?room=11">11</a>
-                    </li>
-					<li>
-                        <a href="boarder_page.php?room=12">12</a>
-                    </li>
-                    
+                   <?php  for ($i=1; $i<=$a  ; $i++) { ?>
+                    <li  <?php if($page==$i){ echo "class='active'";} ?> ><a href="boarder.php?page=<?php echo $i; ?>" ><?php echo $i; ?></a></li>
+                    <?php } ?>  
                 </ul>
             </div>
         </div>
@@ -161,11 +138,13 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../_js/bootstrap.min.js"></script>
-	<?php
-			if($warning != NULL) {
-				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
-			}
-	?>
+    <?php
+            if($warning != NULL) {
+                echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
+                $_SESSION['notification'] = NULL;
+            }
+    
+    ?>
 </body>
 
 </html>

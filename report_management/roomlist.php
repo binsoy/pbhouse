@@ -111,9 +111,8 @@
                         <h1 class="page-header">Rooms</h1>
                         
                         <ol id="pointer" class="breadcrumb">
-                            <li><a href="Roommngmt.php">Home</a>
+                            <li><a href="../home.php">Home</a>
                             </li>
-                            <li class="active">Building Management</li>
                             <li class="active">Room Status and Issues</li>
                         </ol>
                     </div>

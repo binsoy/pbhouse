@@ -3,7 +3,7 @@
 	include '../_includes/connection.php';
 
 	$reportID = $_POST['reportID'];
-	$opt = $_POST['optradio'];
+	$opt = $_POST['repStatus'];
 
 	$query = "UPDATE report SET state = '$opt' where reportID = '$reportID'";
 	$res = mysql_query($query) or die(mysql_error());

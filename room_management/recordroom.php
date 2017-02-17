@@ -29,12 +29,12 @@
 			$floor = 3;
 		}
 		
-		$queryB = "INSERT INTO room(roomID, floor, state, capacity, floorplan, rent, water, wattCost, wattage, balance, overPayment, paymentStat) VALUES('', '$floor', '$status', '$pop', '$path', '$rate', '$water', '$wattcost', '$wattage', 0, 0, 0)";
+		$queryB = "INSERT INTO room(roomID, floor, state, capacity, floorplan, rent, balance, overPayment, paymentStat) VALUES('', '$floor', '$status', '$pop', '$path', '$rate', 0, 0, 1)";
 		$resultB = mysql_query($queryB) or die(mysql_error());
 		header('Location: roommngmt.php');	
 	}
 	else {
-		$_SESSION['notification'] = " you have reached the maximum number of rooms";
+		$_SESSION['notification'] = "You have reached the maximum number of rooms";
 		header('Location: roommngmt.php');
 	}
 	

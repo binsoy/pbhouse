@@ -1,12 +1,14 @@
 <?php
+    session_start();
     error_reporting(0);
 	include '../_includes/connection.php';
 	include '../_includes/functions.php';
 
+    
 	$tenantID = $_GET['id'];
 	$query = "SELECT * FROM tenant WHERE tenantID='$tenantID'";
 	$result = mysql_query($query) or die(mysql_error());
-	$row = mysql_fetch_array($result);
+	$row = mysql_fetch_assoc($result);
 	$name = $row['fname'] . " " . $row['lname'];
 	$gender = $row['gender'];
 	$bdate = $row['birthDate'];
@@ -20,7 +22,6 @@
 	$address = $row['address'];
 
 	$warning = $_SESSION['notification'];
-	$_SESSION['notification'] = NULL;
 
 ?>
 <html lang="en">
@@ -57,7 +58,6 @@
 
     <!-- Navigation -->
     <?php include_once("../_includes/navbar.php"); ?>
-
     <!-- Page Content -->
     <div class="container">
 
@@ -104,17 +104,21 @@
                             <img src="../_images/phone.png" class="img-responsive img-hover" style="width: 25px; height: 25px; float: left; margin-left: 10px">
                             <p style="margin-top: 13px; margin-left: 30px;"><strong><?php echo $contactNo; ?></strong></p>
                             <p><span style="margin-left: 5px;">Email: <span style="color: red; font-weight: bold;"><?php echo $email; ?></span></span></p>
-                            <p><span style="margin-left: 5px;">Emergency Contact Number:</span></p>
+                            <p><span style="margin-left: 5px;">Emergency Contact Person:</span></p>
                             <p><span style="margin-left: 30px;"><span style="color: red; font-weight: bold;"><?php echo $emergencyContact; ?></span></span></p>
                             <br>
                             <a href="editprofile.php?id=<?php echo $tenantID; ?>">Edit Profile Details / Change Password</a>
+                            <br>
+                            <?php if ($_SESSION['memtype'] !='member') {
+                                echo '<a href="#" data-toggle="modal" data-target="#meModal">Delete User</a>';
+                            } ?>
                         </div>
                     </div>
                     <br>
                     <br>
                     <div style="margin-left: 10%">
                         <p>Currently Occupying <span style="font-weight: bold; color: red">Room No. <?php echo $roomID; ?></span> since <span style="font-weight: bold; color: red"><?php echo $dateStart; ?></span></p>
-                        <a href="#">View Transaction Logs</a><br>
+                        <a href="../billing_management/tenantInvoice.php?id=<?php echo $tenantID; ?>">View Transaction Logs</a><br>
                     </div>
                 </div>
             </div>
@@ -136,7 +140,20 @@
 
     </div>
     <!-- /.container -->
+    <div id="meModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content"  style="text-align: center;">
+          <div class="modal-body">
+            <h4 class="modal-title">Are you sure you want to delete this tenant?</h4>
+            <a href="delete_tenant.php?id=<?php echo $tenantID;  ?>" class="btn btn-danger">Delete</a>
+            <button class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <!-- jQuery -->
     <script src="../_js/jquery.js"></script>
 
@@ -146,6 +163,7 @@
 	<?php
 			if($warning != NULL) {
 				echo '<script type="text/javascript"> alert("' . $warning . '"); </script>';
+                $_SESSION['notification'] = NULL;
 			}
 	?>
 

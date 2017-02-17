@@ -43,11 +43,57 @@
 			if (!empty($newpasswrd)) {
 				$oldpasswrd = $newpasswrd;
 			}
-			$queryC = "UPDATE tenant SET fname='$fname', lname='$lname', address='$permAddress', contactNum='$phoneNo', username='$username', passwrd='$oldpasswrd', gender='$gender', birthDate='$bdate', emergencyContactNum='$emergencyNo', emailAddress='$emailAddress', displayPic='$filename', roomID='$room' WHERE tenantID='$tenantID'";
-			$resultC = mysql_query($queryC) or die(mysql_error());
+			$curRoom = $rowB['roomID'];
+			$res2 = mysql_query("SELECT * FROM tenant where roomID = '$curRoom'") or die(mysql_error());
+			$num = mysql_num_rows($res2);
+			$res1 = mysql_query("SELECT * FROM tenant where roomID = '$room'") or die(mysql_error());
+			$rowNum = mysql_num_rows($res1);
+
+			$q = "SELECT * FROM room where roomID = '$room'";
+			$res = mysql_query($q) or die(mysql_error());
+			$row = mysql_fetch_assoc($res);
+
+			if ($row['state'] <> 3) {
+				$queryC = "UPDATE tenant SET fname='$fname', lname='$lname', address='$permAddress', contactNum='$phoneNo', username='$username', passwrd='$oldpasswrd', gender='$gender', birthDate='$bdate', emergencyContactNum='$emergencyNo', emailAddress='$emailAddress', displayPic='$filename', roomID='$room' WHERE tenantID='$tenantID'";
+				$resultC = mysql_query($queryC) or die(mysql_error());
+
+				if (($row['capacity'] - 1) == $rowNum) {
+					$queryC = "UPDATE room SET state = 3 where roomID = '$room'";
+				}else{
+					$queryC = "UPDATE room SET state = 2 where roomID = '$room'";
+				}
+
+				$resultC = mysql_query($queryC) or die(mysql_error());
 
 			
 
+				if ($curRoom != $room) {
+
+					$q = mysql_query("SELECT * FROM room where roomID = $curRoom") or die(mysql_error());
+					$r = mysql_fetch_assoc($q);
+					if ($r['state'] == 3) {
+						$queryD = "UPDATE room SET state = 2 where roomID = '$curRoom'";
+					}else{
+						if ($num == 1) {
+							$queryD = "UPDATE room SET state = 1 where roomID = '$curRoom'";			
+								
+						}else{
+							$queryD = "UPDATE room SET state = 2 where roomID = '$curRoom'";
+						}
+						mysql_query($queryD) or die(mysql_error());		
+				}
+			}
+
+
+
+
+
+				$_SESSION['notification'] = "Tenant successfully edited.";
+
+			}else{
+				$_SESSION['notification'] = "Room is already full.";
+				header('Location: editprofile.php?id=' . $tenantID);
+		}
 			header('Location: userprof.php?id=' . $tenantID);
 			
 		}

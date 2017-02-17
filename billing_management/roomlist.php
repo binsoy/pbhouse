@@ -18,31 +18,26 @@
 
           $ctr = 0;
           $ctr2 = 0;
+          $ctr3 =0;
           $arrayName = array();
-
+          $arrayID = array();
           $i = 0;
 
           while($row2 = mysql_fetch_array($resultA)) {
-              $arrayName[$i] = $row2['paymentStat'];
-              if ($row2['paymentStat'] == 0) {
+                array_push($arrayID, $row2['roomID']);
+              if ($row2['paymentStat'] == 0 && $row2['state'] < 5) {
+                  $arrayName[$i] = $row2['paymentStat'];
                   $ctr++;
-              }else{
+              }else if($row2['paymentStat'] == 1 && $row2['state'] < 5){
+                   $arrayName[$i] = $row2['paymentStat'];
                   $ctr2++;
+              }else{
+                    $arrayName[$i] = 3;
+                    $ctr3++;
               }
               $i++;
           }         
 
-          $resultc=mysql_query("SELECT count(*) as total from room WHERE state = 1");
-          $available=mysql_fetch_assoc($resultc);
-
-          $resultd=mysql_query("SELECT count(*) as total from room WHERE state = 2");
-          $occupied=mysql_fetch_assoc($resultd);
-
-          $resulte=mysql_query("SELECT count(*) as total from room WHERE state = 3");
-          $full=mysql_fetch_assoc($resulte);
-
-          $resultf=mysql_query("SELECT count(*) as total from room WHERE state = 4");
-          $underm=mysql_fetch_assoc($resultf);
     ?>
 <html lang="en">
 
@@ -85,9 +80,8 @@
                         <h1 class="page-header">Rooms</h1>
                         
                         <ol id="pointer" class="breadcrumb">
-                            <li><a href="Roommngmt.php">Home</a>
+                            <li><a href="../home.php">Home</a>
                             </li>
-                            <li class="active">Room Management</li>
                             <li class="active">Rooms</li>
                         </ol>
                     </div>
@@ -105,255 +99,346 @@
                 
                 <div class="container" id="tablecont">
                     <div class="container-fluid col-lg-3" id="t1">
-                        <a href="billing.php?room=1"><div class="container-fluid" id="t1a">
-                            <div class="container-fluid" onclick="roomdetails.php">
+                         <?php
+                                if (in_array(1, $arrayID)) {
+                                    if ($arrayName[0] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=1">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t1a">
+                            <div class="container-fluid" >
                                 <span>Room No.1</span>
                             </div>
                             <div class="container-fluid">
                                 <span>1st floor</span>
                             </div>
-                             <?php 
-                                if ($arrayName[0] == 0) {
-                                   $stat1 = "Unpaid";
-                                   $color1 = "#E7564C";
-                                }else if($arrayName[0] == 1){
-                                    $stat1 = "Paid";
-                                    $color1 = "#6ACA6B";
-                                }else{
-                                    $stat1 = "Unregistered";
-                                    $color1 = "#545556";
-                                }
-                            ?>
                             <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
                                 <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="billing.php?room=5"><div class="container-fluid" id="t1b">
+                        <?php
+                                if (in_array(5, $arrayID)) {
+                                    if ($arrayName[4] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=5">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t1b">
                             <div class="container-fluid">
                                 <span>Room No.5</span>
                             </div>
                             <div class="container-fluid">
                                 <span>2nd floor</span>
                             </div>
-                            <?php if ($arrayName[4] == 0) {
-                                   $stat2 = "Unpaid";
-                                   $color2 = "#E7564C";
-                                }else if($arrayName[4] == 1){
-                                    $stat2 = "Paid";
-                                    $color2 = "#6ACA6B";
-                                }else{
-                                     $stat2 = "Unregistered";
-                                    $color2 = "#545556";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $color2?>">
-                                <span>status: <?php echo $stat2?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="billing.php?room=9"><div class="container-fluid" id="t1c">
+                        <?php
+                                if (in_array(9, $arrayID)) {
+                                    if ($arrayName[8] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=9">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t1c">
                             <div class="container-fluid">
                                 <span>Room No.9</span>
                             </div>
                             <div class="container-fluid">
                                 <span>3rd floor</span>
                             </div>
-                            <?php 
-                                if ($arrayName[8] == 0) {
-                                   $stat3 = "Unpaid";
-                                   $color3 = "#E7564C";
-                                }else if($arrayName[8] == 1){
-                                    $stat3 = "Paid";
-                                    $color3 = "#6ACA6B";
-                                }else{
-                                     $stat3 = "Unregistered";
-                                    $color3 = "#545556";
-                                }
-                            ?>
-                            <div class="container-fluid"  id="txt" style="color:<?php echo $color3?>">
-                                <span>status: <?php echo $stat3?></span>
+                            <div class="container-fluid"  id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
                     </div>
                     <div class="container-fluid col-lg-3" id="t2">
-                        <a href="billing.php?room=2"><div class="container-fluid" id="t2a">
+                    <?php
+                                if (in_array(2, $arrayID)) {
+                                    if ($arrayName[1] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=2">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t2a">
                             <div class="container-fluid">
                                 <span>Room No.2</span>
                             </div>
                             <div class="container-fluid">
                                 <span>1st floor</span>
                             </div>
-                            <?php 
-                                if ($arrayName[1] == 0) {
-                                   $stat4 = "Unpaid";
-                                   $color4 = "#E7564C";
-                                }else{
-                                    $stat4 = "Paid";
-                                    $color4 = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid"  id="txt" style="color:<?php echo $color4?>">
-                                <span>status: <?php echo $stat4?></span>
+                            <div class="container-fluid"  id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                         <a href="billing.php?room=6"><div class="container-fluid" id="t2b">
+                        <?php
+                                if (in_array(6, $arrayID)) {
+                                    if ($arrayName[5] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=6">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t2b">
                             <div class="container-fluid">
                                 <span>Room No.6</span>
                             </div>
                             <div class="container-fluid">
                                 <span>2nd floor</span>
                             </div>
-                            <?php if ($arrayName[5] == 0) {
-                                   $stat5 = "Unpaid";
-                                   $color5 = "#E7564C";
-                                }else{
-                                    $stat5 = "Paid";
-                                    $color5 = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $color5?>">
-                                <span>status: <?php echo $stat5?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="billing.php?room=10"><div class="container-fluid" id="t2c">
+                        <?php
+                                if (in_array(10, $arrayID)) {
+                                    if ($arrayName[9] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=10">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t2c">
                             <div class="container-fluid">
                                 <span>Room No.10</span>
                             </div>
                             <div class="container-fluid">
                                 <span>3rd floor</span>
                             </div>
-                            <?php 
-                                if ($arrayName[9] == 0) {
-                                   $stat6 = "Unpaid";
-                                   $color6 = "#E7564C";
-                                }else{
-                                    $stat6 = "Paid";
-                                    $color6 = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $color6?>">
-                                <span>status: <?php echo $stat6?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
                     </div>
                     <div class="container-fluid col-lg-3" id="t3">
-                        <a href="billing.php?room=3"><div class="container-fluid" id="t3a">
+                    <?php
+                                if (in_array(3, $arrayID)) {
+                                    if ($arrayName[2] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=3">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t3a">
                             <div class="container-fluid">
                                 <span>Room No.3</span>
                             </div>
                             <div class="container-fluid">
                                 <span>1st floor</span>
                             </div>
-                            <?php 
-                                if ($arrayName[2] == 0) {
-                                   $stat7 = "Unpaid";
-                                   $color7 = "#E7564C";
-                                }else{
-                                    $stat7 = "Paid";
-                                    $color7 = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $color7?>">
-                                <span>status: <?php echo $stat7?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="billing.php?room=7"><div class="container-fluid" id="t3b">
+                        <?php
+                                if (in_array(7, $arrayID)) {
+                                    if ($arrayName[6] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=7">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t3b">
                             <div class="container-fluid">
                                 <span>Room No.7</span>
                             </div>
                             <div class="container-fluid">
                                 <span>2nd floor</span>
                             </div>
-                            <?php 
-                                if ($arrayName[6] == 0) {
-                                   $stat8 = "Unpaid";
-                                   $color8 = "#E7564C";
-                                }else{
-                                    $stat8 = "Paid";
-                                    $color8 = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $color8?>">
-                                <span>status: <?php echo $stat8?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="billing.php?room=11"><div class="container-fluid" id="t3c">
+                        <?php
+                                if (in_array(11, $arrayID)) {
+                                    if ($arrayName[10] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=11">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t3c">
                             <div class="container-fluid">
                                 <span>Room No.11</span>
                             </div>
                             <div class="container-fluid">
                                 <span>3rd floor</span>
                             </div>
-                            <?php 
-                                if ($arrayName[10] == 0) {
-                                   $stat9 = "Unpaid";
-                                   $color9 = "#E7564C";
-                                }else{
-                                    $stat9 = "Paid";
-                                    $color9 = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $color9?>">
-                                <span>status: <?php echo $stat9?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div>
                     </div></a>
                     <div class="container-fluid col-lg-3" id="t4">
-                        <a href="billing.php?room=4"><div class="container-fluid" id="t4a">
+                    <?php
+                                if (in_array(4, $arrayID)) {
+                                    if ($arrayName[3] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=4">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t4a">
                             <div class="container-fluid">
                                 <span>Room No.4</span>
                             </div>
                             <div class="container-fluid">
                                 <span>1st floor</span>
                             </div>
-                            <?php 
-                                if ($arrayName[3] == 0) {
-                                   $stata = "Unpaid";
-                                   $colora = "#E7564C";
-                                }else{
-                                    $stata = "Paid";
-                                    $colora = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $colora?>">
-                                <span>status: <?php echo $stata?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="billing.php?room=8"><div class="container-fluid" id="t4b">
+                        <?php
+                                if (in_array(8, $arrayID)) {
+                                    if ($arrayName[7] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=8">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t4b">
                             <div class="container-fluid">
                                 <span>Room No.8</span>
                             </div>
                             <div class="container-fluid">
                                 <span>2nd floor</span>
                             </div>
-                            <?php if ($arrayName[7] == 0) {
-                                   $statb = "Unpaid";
-                                   $colorb = "#E7564C";
-                                }else{
-                                    $statb = "Paid";
-                                    $colorb = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $colorb?>">
-                                <span>status: <?php echo $statb?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>
                         </div></a>
-                        <a href="billing.php?room=12"><div class="container-fluid" id="t4c">
+                        <?php
+                                if (in_array(12, $arrayID)) {
+                                    if ($arrayName[11] == 0) {
+                                       $stat1 = "Unpaid";
+                                       $color1 = "#E7564C";
+                                    }else{
+                                        $stat1 = "Paid";
+                                        $color1 = "#6ACA6B";
+                                    }
+                                    $link = '<a href="billing.php?room=12">';
+                                }else{
+                                    $stat1 = "Unregistered";
+                                    $color1 = "#545556";
+                                    $link = "<a href='#' onclick='meFunction()'>";
+                                }
+                                    
+                            ?>
+                        <?php echo $link; ?><div class="container-fluid" id="t4c">
                             <div class="container-fluid">
                                 <span>Room No.12</span>
                             </div>
                             <div class="container-fluid">
                                 <span>3rd floor</span>
                             </div>
-                            <?php if ($arrayName[11] == 0) {
-                                   $statc = "Unpaid";
-                                   $colorc = "#E7564C";
-                                }else{
-                                    $statc = "Paid";
-                                    $colorc = "#6ACA6B";
-                                }
-                            ?>
-                            <div class="container-fluid" id="txt" style="color:<?php echo $colorc?>">
-                                <span>status: <?php echo $statc?></span>
+                            <div class="container-fluid" id="txt" style="color:<?php echo $color1?>">
+                                <span>status: <?php echo $stat1?></span>
                             </div>  
                         </div></a>
                     </div>
@@ -382,6 +467,10 @@
         function showPage() {
           document.getElementById("loader").style.display = "none";
           document.getElementById("myDiv").style.display = "block";
+        }
+
+        function meFunction(){
+            alert("Room needs to be registered first. Please refer to Room Management.");
         }
     </script>
 

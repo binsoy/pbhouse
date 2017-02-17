@@ -1,5 +1,7 @@
 <?php
-	session_start();
+
+    error_reporting(0);
+	session_destroy();
     $_SESSION['uname'] = NULL;
 	$_SESSION['notification'] = NULL;
 ?>
@@ -17,20 +19,10 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="_css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="_css/modern-business.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="_font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="_includes/style-index.css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    
 </head>
 
 <body>
@@ -58,7 +50,7 @@
                             <input  type="text" name="uname" required>
                             <span>Password</span>   
                             <input  type="password" name="pass" required autocomplete="new-password">
-                            <input type="submit" value="Submit" required>
+                            <input type="submit" value="Submit">
                         </div>  
                         </form>
                     </li>

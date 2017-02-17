@@ -86,9 +86,8 @@
                         <h1 class="page-header">Building Report</h1>
                         
                         <ol id="pointer" class="breadcrumb">
-                            <li><a href="Roommngmt.php">Home</a>
+                            <li><a href="../home.php">Home</a>
                             </li>
-                            <li class="active">Reports</li>
                             <li class="active">Write Building Report</li>
                         </ol>
                         <div class="row">

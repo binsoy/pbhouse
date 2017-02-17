@@ -40,7 +40,7 @@
                 <h1 id="pointer" class="page-header">Add Room</h1>
         
                 <ol id="pointer"  class="breadcrumb">
-                    <li><a href="Roommngmt.php">Home</a>
+                    <li><a href="../home.php">Home</a>
                     </li>
                     <li class="active">Add Room</li>
                 </ol>
@@ -61,36 +61,20 @@
                         <option value ='1'>Available</option>
                         <option value ='2'>Occupied</option>
                         <option value ='3'>Full</option>
-                        <option value ='4'>Under Maintenance</option>
                     </select>                
                 </div>
                 <div class = "container-fluid" id="textfield2">
                     <label>Room Rate: </label>
                     <span>php</span>
-                    <input class ="form-control" class ="form-control" type="number" name="rate" min="0" max="999999">
+                    <input class ="form-control" class ="form-control" type="number" name="rate" min="1" max="999999" required="">
                 </div>
                 <div class = "container-fluid" id="textfield3">
                     <label>Maximum Person(s) per room: </label>
-                    <input class ="form-control" type="number" name="population">
-                </div>
-                <div class = "container-fluid" id="textfield4">
-                    <label>Water fee: </label>
-                    <span>php</span>
-                    <input class ="form-control" type="number" name="water">
-                </div>
-                <div class = "container-fluid" id="textfield5">
-                    <label>wattcost: </label>
-                    <span>php</span>
-                    <input class ="form-control" type="number" name="wattcost">
-                </div>
-                <div class = "container-fluid" id="textfield5">
-                    <label>Wattage: </label>
-                    <span>php</span>
-                    <input class ="form-control" type="number" name="wattage">
+                    <input class ="form-control" type="number" max="12" min="1" name="population" required="">
                 </div>
                 <div id="buttons">
                     <center>
-                      <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to continue?')">Submit</button>
+                      <button type="submit" class="btn btn-primary" >Submit</button>
                       <button type="reset" value="Reset" class="btn btn-danger">Reset</button>
                     </center>
                 </div>
