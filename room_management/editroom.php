@@ -1,6 +1,6 @@
 <?php
 	include '../_includes/connection.php';
-	
+	session_start();
 	$room = $_GET['room'];
 	$query = "SELECT * FROM room WHERE roomID='$room'";
 	$result = mysql_query($query) or die(mysql_error());
@@ -16,6 +16,7 @@
 	$cost = $row['wattCost'];
 	$roomID = $row['roomID'];
   $wattage = $row['wattage'];
+
 ?>
 
    <div class="modal-dialog">
@@ -29,7 +30,7 @@
           <form role="form" form action="updateroom.php?room=<?php echo $_GET['room']?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>Floor Plan and Amenities: </label>
-              <input accept="image/*" class="form-control-file form-control" type="file" name="filename" value=<?php echo $floorplan?> required>
+              <input accept="image/*" class="form-control-file form-control" type="file" name="filename" value="../_images/floorplan/fp" required>
             </div>
             <div class="form-group">
               <label>Room Status: </label>

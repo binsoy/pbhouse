@@ -23,6 +23,13 @@
 	$dateStart = $row['dateStart'];
 	$displayPic = $row['displayPic'];
 	$roomID = $row['roomID'];
+
+	$acctype = $_SESSION['memtype'];
+      if($acctype == 'admin'){
+        $display="";
+      }else if($acctype == 'member'){
+        $display="none";
+      }
 	
 
 	$query1 = "SELECT * FROM room";
@@ -110,8 +117,8 @@
 						<label for="oldpasswrd">Old Password</label>
 						<input type="password" required="" class="form-control" id="oldpasswrd" name="oldpasswrd"  /> <br />
 
-						<label for="room">Room Occupied</label>
-						<select class="form-control" id="room" name="room" required>
+						<label for="room" style="display:<?php echo $display?>">Room Occupied</label>
+						<select class="form-control" id="room" name="room" required style="display:<?php echo $display?>">
 						  <?php 
 
 						 while ($res = mysql_fetch_assoc($result2)) {		?>

@@ -3,7 +3,7 @@
   session_start();
   error_reporting(0);
 
-    if (empty($_SESSION['logged_in']))
+    if ($_SESSION['logged_in'] == 0)
         {
             header('Location: index.php');
         }
@@ -60,7 +60,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="room_management/roommngmt.php">Pastillo's Boarding House</a>
+                <a class="navbar-brand" href="home.php">Pastillo's Boarding House</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

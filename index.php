@@ -1,7 +1,7 @@
 <?php
-
+    session_start();
     error_reporting(0);
-	session_destroy();
+    $_SESSION['logged_in'] = 0;
     $_SESSION['uname'] = NULL;
 	$_SESSION['notification'] = NULL;
 ?>

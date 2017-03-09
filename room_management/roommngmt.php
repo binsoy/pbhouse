@@ -1,10 +1,14 @@
 <!DOCTYPE html>
     <?php 
         session_start();
+        $notif = $_SESSION['notification'];
+        if($_SESSION['logged_in'] == 0){
+            header('Location: ../index.php');
+        }
         error_reporting(0);
         include '../_includes/connection.php';
         include '../_includes/navbar.php';
-        $notif = $_SESSION['notification'];
+
           /*$query = "SELECT * FROM room WHERE roomID='$room'";
           $result = mysql_query($query) or die(mysql_error());
           $row = mysql_fetch_array($result);*/
