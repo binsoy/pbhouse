@@ -17,8 +17,15 @@
 	$roomID = $row['roomID'];
   $wattage = $row['wattage'];
 
-?>
+  if($state == 1){
+    $one = 'selected';
+  }else if ($state == 2){
+    $two = 'selected';
+  }else if ($state == 3){
+    $three = 'selected';
+  }
 
+?>
    <div class="modal-dialog">
   
       <div class="modal-content">
@@ -34,10 +41,10 @@
             </div>
             <div class="form-group">
               <label>Room Status: </label>
-                  <select class="form-control" id="room" name="status" required name="status">
-                    <option value ='1'>Available</option>
-                    <option value ='2'>Occupied</option>
-                    <option value ='3'>Full</option>
+                  <select class="form-control" id="room" name="status" required name="status">        
+                    <option value ='1' <?php echo $one;?>>Available</option>
+                    <option value ='2' <?php echo $two;?>>Occupied</option>
+                    <option value ='3' <?php echo $three;?>>Full</option>
                   </select>     
             </div>
             <div class="form-group">
