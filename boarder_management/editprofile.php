@@ -30,6 +30,25 @@
       }else if($acctype == 'member'){
         $display="none";
       }
+
+       	  $querya1 = "SELECT * FROM room WHERE roomID='$roomID'";
+		  $resulta1 = mysql_query($querya1) or die(mysql_error());
+		  $rowa1 = mysql_fetch_array($resulta1);
+		  $capacitya1 = $rowa1['capacity'];
+
+		  $result1=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '$roomID'");
+		  $boarder1=mysql_fetch_assoc($resultboard1);
+
+		  if($boarder1['total'] == 0){
+		  	$querya1 = "UPDATE room SET state='1' WHERE roomID='$roomID'";
+			$resulta1 = mysql_query($querya1) or die(mysql_error());
+		  }else if($boarder1['total'] > 0 && $boarder1['total'] < $capacity1){
+		  	$querya1 = "UPDATE room SET state='2' WHERE roomID='$roomID'";
+			$resulta1 = mysql_query($querya1) or die(mysql_error());
+		  }else if($boarder1['total'] == $capacity1 && $boarder1['total'] > $capacity1){
+		  	$querya1 = "UPDATE room SET state='3' WHERE roomID='$roomID'";
+			$resulta1 = mysql_query($querya1) or die(mysql_error());
+		  }
 	
 
 	$query1 = "SELECT * FROM room";
