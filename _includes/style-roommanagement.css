@@ -15,10 +15,11 @@
 
 #statcontain{
 	text-align: center;
-	padding:20px 20px 20px 12px;
+	padding:20px 20px 20px 120px;
 	margin-bottom: 12px;
 	width:97%;
 	margin-right: 5%;
+
 }
 
 #statcontain div:nth-child(1) span{
