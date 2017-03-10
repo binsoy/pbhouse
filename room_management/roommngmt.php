@@ -43,6 +43,188 @@
           $resultf=mysql_query("SELECT count(*) as total from room WHERE state = 4");
           $underm=mysql_fetch_assoc($resultf);
 
+
+          $query1 = "SELECT * FROM room WHERE roomID='1'";
+		  $result1 = mysql_query($query1) or die(mysql_error());
+		  $row1 = mysql_fetch_array($result1);
+		  $capacity1 = $row1['capacity'];
+
+		  $query2 = "SELECT * FROM room WHERE roomID='2'";
+		  $result2 = mysql_query($query2) or die(mysql_error());
+		  $row2 = mysql_fetch_array($result2);
+		  $capacity2 = $row1['capacity'];
+
+		  $query3 = "SELECT * FROM room WHERE roomID='3'";
+		  $result3 = mysql_query($query3) or die(mysql_error());
+		  $row3 = mysql_fetch_array($result3);
+		  $capacity3 = $row1['capacity'];
+
+		  $query4 = "SELECT * FROM room WHERE roomID='4'";
+		  $result4 = mysql_query($query4) or die(mysql_error());
+		  $row4 = mysql_fetch_array($result4);
+		  $capacity4 = $row4['capacity'];
+
+		  $query5 = "SELECT * FROM room WHERE roomID='5'";
+		  $result5 = mysql_query($query5) or die(mysql_error());
+		  $row5 = mysql_fetch_array($result5);
+		  $capacity5 = $row5['capacity'];
+
+		  $query6 = "SELECT * FROM room WHERE roomID='6'";
+		  $result6 = mysql_query($query6) or die(mysql_error());
+		  $row6 = mysql_fetch_array($result6);
+		  $capacity6 = $row6['capacity'];
+
+		  $query7 = "SELECT * FROM room WHERE roomID='7'";
+		  $result7 = mysql_query($query7) or die(mysql_error());
+		  $row7 = mysql_fetch_array($result7);
+		  $capacity7 = $row7['capacity'];
+
+		  $query8 = "SELECT * FROM room WHERE roomID='8'";
+		  $result8 = mysql_query($query8) or die(mysql_error());
+		  $row8 = mysql_fetch_array($result8);
+		  $capacity8 = $row8['capacity'];
+
+		  $query9 = "SELECT * FROM room WHERE roomID='9'";
+		  $result9 = mysql_query($query9) or die(mysql_error());
+		  $row9 = mysql_fetch_array($result9);
+		  $capacity9 = $row9['capacity'];
+
+		  $query10 = "SELECT * FROM room WHERE roomID='10'";
+		  $result10 = mysql_query($query10) or die(mysql_error());
+		  $row10 = mysql_fetch_array($result10);
+		  $capacity10 = $row10['capacity'];
+
+		  $query11 = "SELECT * FROM room WHERE roomID='11'";
+		  $result11 = mysql_query($query11) or die(mysql_error());
+		  $row11 = mysql_fetch_array($result11);
+		  $capacity11 = $row11['capacity'];
+
+		  $query12 = "SELECT * FROM room WHERE roomID='12'";
+		  $result12 = mysql_query($query12) or die(mysql_error());
+		  $row12 = mysql_fetch_array($result12);
+		  $capacity12 = $row12['capacity'];
+
+
+          $result1=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '1'");
+		  $boarder1=mysql_fetch_assoc($resultboard1);
+		  //echo "HELLOW".$boarder['total'];
+		  $result2=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '2'");
+		  $boarder2=mysql_fetch_assoc($resultboard2);
+
+		  $result3=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '3'");
+		  $boarder3=mysql_fetch_assoc($resultboard3);		  
+
+		  $result4=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '4'");
+		  $boarder4=mysql_fetch_assoc($resultboard2);
+
+		  $result5=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '5'");
+		  $boarder5=mysql_fetch_assoc($resultboard5);
+
+		  $result6=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '6'");
+		  $boarder6=mysql_fetch_assoc($resultboard6);
+
+		  $result7=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '7'");
+		  $boarder7=mysql_fetch_assoc($resultboard7);
+
+		  $result8=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '8'");
+		  $boarder8=mysql_fetch_assoc($resultboard8);
+
+		  $result9=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '9'");
+		  $boarder9=mysql_fetch_assoc($resultboard9);
+
+		  $result10=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '10'");
+		  $boarder10=mysql_fetch_assoc($resultboard10);
+
+		  $result11=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '11'");
+		  $boarder11=mysql_fetch_assoc($resultboard11);
+
+		  $result12=mysql_query("SELECT count(*) as total from tenant WHERE roomID = '12'");
+		  $boarder12=mysql_fetch_assoc($resultboard12);
+
+		 if($boarder1['total'] > 0 && $boarder1['total'] < $capacity1){
+		  	$querya1 = "UPDATE room SET state='2' WHERE roomID='1'";
+			$resulta1 = mysql_query($querya1) or die(mysql_error());
+		  }else if($boarder1['total'] == $capacity1 && $boarder1['total'] > $capacity1){
+		  	$querya1 = "UPDATE room SET state='3' WHERE roomID='1'";
+			$resulta1 = mysql_query($querya1) or die(mysql_error());
+		  }
+		  if($boarder2['total'] > 0 && $boarder1['total'] < $capacity1){
+		  	$querya2 = "UPDATE room SET state='2' WHERE roomID='2'";
+			$resulta2 = mysql_query($querya2) or die(mysql_error());
+		  }else if($boarder2['total'] == $capacity1 && $boarder1['total'] > $capacity2){
+		  	$querya2 = "UPDATE room SET state='3' WHERE roomID='2'";
+			$resulta2 = mysql_query($querya2) or die(mysql_error());
+		  }
+		  if($boarder3['total'] > 0 && $boarder3['total'] < $capacity3){
+		  	$querya3 = "UPDATE room SET state='2' WHERE roomID='3'";
+			$resulta3 = mysql_query($querya3) or die(mysql_error());
+		  }else if($boarder3['total'] == $capacity3 && $boarder3['total'] > $capacity3){
+		  	$querya3 = "UPDATE room SET state='3' WHERE roomID='3'";
+			$resulta3 = mysql_query($querya3) or die(mysql_error());
+		  }
+		   if($boarder4['total'] > 0 && $boarder4['total'] < $capacity4){
+		  	$querya4 = "UPDATE room SET state='2' WHERE roomID='4'";
+			$resulta4 = mysql_query($querya4) or die(mysql_error());
+		  }else if($boarder4['total'] == $capacity4 && $boarder4['total'] > $capacity4){
+		  	$querya4 = "UPDATE room SET state='3' WHERE roomID='4'";
+			$resulta4 = mysql_query($querya4) or die(mysql_error());
+		  }
+		   if($boarder5['total'] > 0 && $boarder5['total'] < $capacity5){
+		  	$querya5 = "UPDATE room SET state='2' WHERE roomID='5'";
+			$resulta5 = mysql_query($querya5) or die(mysql_error());
+		  }else if($boarder5['total'] == $capacity5 && $boarder5['total'] > $capacity5){
+		  	$querya5 = "UPDATE room SET state='3' WHERE roomID='5'";
+			$resulta5 = mysql_query($querya5) or die(mysql_error());
+		  }
+		   if($boarder6['total'] > 0 && $boarder6['total'] < $capacity6){
+		  	$querya6 = "UPDATE room SET state='2' WHERE roomID='6'";
+			$resulta6 = mysql_query($querya6) or die(mysql_error());
+		  }else if($boarder6['total'] == $capacity6 && $boarder6['total'] > $capacity6){
+		  	$querya6 = "UPDATE room SET state='3' WHERE roomID='6'";
+			$resulta6 = mysql_query($querya6) or die(mysql_error());
+		  }
+		   if($boarder7['total'] > 0 && $boarder7['total'] < $capacity7){
+		  	$querya7 = "UPDATE room SET state='2' WHERE roomID='7'";
+			$resulta7 = mysql_query($querya7) or die(mysql_error());
+		  }else if($boarder7['total'] == $capacity7 && $boarder7['total'] > $capacity7){
+		  	$querya7 = "UPDATE room SET state='3' WHERE roomID='7'";
+			$resulta7 = mysql_query($querya7) or die(mysql_error());
+		  }
+		   if($boarder8['total'] > 0 && $boarder8['total'] < $capacity8){
+		  	$querya8 = "UPDATE room SET state='2' WHERE roomID='8'";
+			$resulta8 = mysql_query($querya8) or die(mysql_error());
+		  }else if($boarder8['total'] == $capacity8 && $boarder8['total'] > $capacity8){
+		  	$querya8 = "UPDATE room SET state='3' WHERE roomID='8'";
+			$resulta8 = mysql_query($querya8) or die(mysql_error());
+		  }
+		   if($boarder9['total'] > 0 && $boarder9['total'] < $capacity9){
+		  	$querya9 = "UPDATE room SET state='2' WHERE roomID='9'";
+			$resulta9 = mysql_query($querya9) or die(mysql_error());
+		  }else if($boarder9['total'] == $capacity9 && $boarder9['total'] > $capacity9){
+		  	$querya9 = "UPDATE room SET state='3' WHERE roomID='9'";
+			$resulta9 = mysql_query($querya9) or die(mysql_error());
+		  }
+		   if($boarder10['total'] > 0 && $boarder10['total'] < $capacity10){
+		  	$querya10 = "UPDATE room SET state='2' WHERE roomID='10'";
+			$resulta10 = mysql_query($querya10) or die(mysql_error());
+		  }else if($boarder10['total'] == $capacity10 && $boarder10['total'] > $capacity10){
+		  	$querya10 = "UPDATE room SET state='3' WHERE roomID='10'";
+			$resulta10 = mysql_query($querya10) or die(mysql_error());
+		  }
+		   if($boarder11['total'] > 0 && $boarder11['total'] < $capacity11){
+		  	$querya11 = "UPDATE room SET state='2' WHERE roomID='11'";
+			$resulta11 = mysql_query($querya11) or die(mysql_error());
+		  }else if($boarder11['total'] == $capacity11 && $boarder11['total'] > $capacity11){
+		  	$querya11 = "UPDATE room SET state='3' WHERE roomID='11'";
+			$resulta11 = mysql_query($querya11) or die(mysql_error());
+		  }
+		   if($boarder12['total'] > 0 && $boarder11['total'] < $capacity12){
+		  	$querya12 = "UPDATE room SET state='2' WHERE roomID='12'";
+			$resulta12 = mysql_query($querya12) or die(mysql_error());
+		  }else if($boarder12['total'] == $capacity12 && $boarder12['total'] > $capacity12){
+		  	$querya12 = "UPDATE room SET state='3' WHERE roomID='12'";
+			$resulta12 = mysql_query($querya12) or die(mysql_error());
+		  }
     ?>
 <html lang="en">
 
@@ -122,7 +304,8 @@
                             <div class="container-fluid">
                                 <span>1st floor</span>
                             </div>
-                             <?php if($result[0]['state'] == 1){
+                             <?php 
+                             		if($result[0]['state'] == 1){
                                         $stat1 = 'available';
                                         $color1 = '#6aca6b';
                                     }else if($result[0]['state'] == 2){
